@@ -1,0 +1,11 @@
+/.next
+/out
+
+# Lighthouse
+/.lighthouseci
+
+# All kinds of potential reports
+/_reports
+
+# Generate assets for favicons
+/public/favicons

@@ -3,36 +3,100 @@ name: CI
 on:
   push:
     branches:
-      - '**'
+      - "**"
   pull_request:
     branches:
-      - '**'
+      - "**"
 
   workflow_dispatch:
 
 jobs:
   check:
+    name: Pre-build checks
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - run: npm install
-      - run: npm run eslint-ci
+      - run: npm run eslint-check
+      - run: npm run prettier-check
+      - run: npm run typescript-ci
 
   build:
+    name: Build & export site
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - run: npm install
-      - run: npm run eslint-ci
+      - run: npm run next-build
+      - run: npm run next-export
+      - uses: actions/upload-artifact@v2
+        with:
+          name: static-site-export
+          path: out
+
+  lighthouse:
+    name: Lighthouse
+    needs:
+      - check
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: "Download a single artifact"
+        uses: actions/download-artifact@v2
+        with:
+          name: static-site-export
+          path: out
+      - run: npm install
+      - name: Run Lighthouse CI
+        env:
+          LIGHTHOUSE_STATIC_SITE_PATH: "./out"
+        run: npm run lighthouse-ci
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-report
+          path: ./_reports/lighthouse
+
+  deploy:
+    name: Deploy to AWS
+    needs:
+      - check
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: "Download a single artifact"
+        uses: actions/download-artifact@v2
+        with:
+          name: static-site-export
+          path: out
+      - name: "Configure AWS Credentials"
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - run: npm install
+      - name: "Deploy to AWS S3 bucket"
+        env:
+          AWS_S3_BUCKET_NAME: leoselig.dev
+          AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.DEPLOY_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+          AWS_CLOUDFRONT_ORIGIN_ID: ${{ secrets.DEPLOY_AWS_CLOUDFRONT_ORIGIN_ID }}
+          TMP_DISTRIBUTION_CONFIG_FILE: "./tmp_cloudfront-distribution-config.json"
+        run: npm run deploy

@@ -3,3 +3,6 @@
 # Next.js
 /out
 /.next
+
+# Lighthouse
+/.lighthouseci
