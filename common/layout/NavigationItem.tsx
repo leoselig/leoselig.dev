@@ -28,14 +28,12 @@ type TProps = {
   route: string;
   title: string;
   onHoverFocusChange: (route: string, isHovered: boolean) => unknown;
-  isCurrentRoute: boolean;
 };
 
 export const NavigationItem = memo(function NavigationItem({
   route,
   title,
   onHoverFocusChange,
-  isCurrentRoute,
   ...otherProps
 }: TProps) {
   const { isHovered, ...hoverStateProps } = useHoverState();
@@ -50,9 +48,7 @@ export const NavigationItem = memo(function NavigationItem({
 
   return (
     <Item {...hoverStateProps} {...otherProps}>
-      <SLink to={route} isCurrentRoute={isCurrentRoute}>
-        {title}
-      </SLink>
+      <SLink to={route}>{title}</SLink>
     </Item>
   );
 });

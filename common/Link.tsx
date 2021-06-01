@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { ReactNode, ComponentProps } from "react";
+import { ReactNode, ComponentProps, HTMLProps } from "react";
 import styled from "styled-components";
 
 export const SAnchor = styled.a`
@@ -17,9 +17,17 @@ export const SAnchor = styled.a`
 type TProps = {
   to: string;
   children: ReactNode;
-} & ComponentProps<typeof SAnchor>;
+} & Pick<HTMLProps<typeof SAnchor>, "target"> &
+  Pick<ComponentProps<typeof NextLink>, "passHref" | "prefetch">;
 
-export function Link({ to, children, ...otherProps }: TProps) {
+export function Link({
+  to,
+  children,
+  passHref,
+  target,
+  prefetch,
+  ...otherProps
+}: TProps) {
   if (to.match(/^[a-zA-Z][a-zA-Z0-9\-\+\.]+:/)) {
     return (
       <SAnchor href={to} target="_blank" rel="noopener" {...otherProps}>
@@ -27,9 +35,17 @@ export function Link({ to, children, ...otherProps }: TProps) {
       </SAnchor>
     );
   }
+  const hasTarget = !!target;
+
   return (
-    <NextLink href={to}>
-      <SAnchor {...otherProps}>{children}</SAnchor>
+    <NextLink
+      href={to}
+      passHref={passHref ?? hasTarget}
+      prefetch={prefetch ?? !hasTarget}
+    >
+      <SAnchor target={target} {...otherProps}>
+        {children}
+      </SAnchor>
     </NextLink>
   );
 }

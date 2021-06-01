@@ -6,6 +6,7 @@ export type TNavigationItem$Base = {
   id: string;
   title: string;
   appearances: TNavigationItem$Appearance[];
+  shouldOpenInNewWindow?: boolean;
   Icon?: ComponentType<HTMLProps<"svg">>;
 };
 export type TNavigationItem$Internal = TNavigationItem$Base & { route: string };

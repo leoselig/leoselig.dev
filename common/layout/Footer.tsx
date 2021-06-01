@@ -22,6 +22,7 @@ export function Footer({ ...otherProps }) {
           <SLink
             key={navigationItem.id}
             to={getLinkFromNavigationItem(navigationItem)}
+            target={navigationItem.shouldOpenInNewWindow ? "_blank" : ""}
           >
             {navigationItem.Icon ? (
               <navigationItem.Icon title={navigationItem.title} />

@@ -102,7 +102,6 @@ export function Navigation({ ...otherProps }) {
                 route={itemLink}
                 title={title}
                 onHoverFocusChange={handleHoverFocusChange}
-                isCurrentRoute={itemLink === activeRoute}
               />
               <SMobileRightSideMorphDivider
                 state={
