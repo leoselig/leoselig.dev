@@ -1,0 +1,161 @@
+projects:
+  - client: advalyze, Berlin
+    startDate: 2021-03-08
+    endDate: 2021-05-31
+    activities:
+      - built new website & online shop for unu ([website](https://unumotors.com)) together with advalyze (including another freelancer)
+      - created concept for and implemented modular design system based on Contentful (headless CMS) and Gatsby
+      - implemented animation-heavy responsive design
+      - connected CRM backend via Netlify functions
+    skills:
+      - Gatsby
+      - React
+      - Contentful
+      - Web Animation API
+      - Netlify
+      - Serverless functions
+employments:
+  - position: Lead Software Engineer
+    employee: neXenio GmbH, Berlin
+    startDate: 2017-10-01
+    endDate: 2021-03-08
+    activities:
+      - lead implemention of bdrive web apps
+      - designed employee dialog process, performed dialogs, participated in hiring process
+      - coordinated product and architectural development across multiple teams
+      - strong focus on security & cryptography
+      - leading setup of cross-platform E2E tests via WebdriverIO for "Digitale Einreiseanmeldung" (https://einreiseanmeldung.de)
+    skills:
+      - React
+      - Redux
+      - redux-saga
+      - styled-components
+      - Webpack
+      - Babel
+      - K8S
+      - WebdriverIO
+  - position: Senior Software Engineer
+    employee: neXenio GmbH, Berlin
+    startDate: 2017-05-01
+    endDate: 2017-09-30
+    activities:
+      - multiple cross-functional teams for developing a fully-encrypted  end-user data storage solution (bdrive)
+      - strong focus on security & cryptography
+      - implemented multiple single-page web applications (React/Redux) & mobile apps (iOS/Android, React Native)
+    skills:
+      - React
+      - Redux
+      - React Native
+      - styled-components
+      - Webpack
+      - Babel
+      - OpenShift
+  - position: Software Engineer
+    employee: neXenio GmbH, Berlin
+    startDate: 2016-11-01
+    endDate: 2017-04-30
+    activities:
+      - multiple cross-functional teams for developing a fully-encrypted cloud storage solution
+      - main focus on implementing multiple single-page-applications based on React/Redux
+      - strong focus on dead-simple usability in collaboration with a UX team
+      - highly involved in ensuring scalability (maintenance of build pipelines, heavy usage of docker and
+      - developed APIs and web-based clients for different platforms (browser extensions, OSX, Windows)
+    skills:
+      - React
+      - Redux
+      - styled-components
+      - Webpack/Babel
+      - OpenShift
+  - position: Frontend Developer
+    employee: ZenGuard GmbH, Berlin
+    startDate: 2016-05-01
+    endDate: 2016-10-31
+    activities:
+      - developed APIs and web-based clients for different platforms (browser extensions, OSX, Windows)
+      - maintained build and deployment pipelines
+      - responsible for macOS app development with strong integration of product management
+    skills:
+      - React
+      - Bacon.js
+      - SCSS
+      - express
+      - Webpack
+      - Babel
+      - Wercker
+      - AWS
+      - Heroku
+  - position: Frontend Developer
+    employee: HeavenHR GmbH, Berlin
+    startDate: 2016-03-01
+    endDate: 2016-04-30
+    activities:
+      - developed a rich stand-alone single page application to be used internally in an SOA
+      - leading the transition of the core application from multi-page to single-page app
+      - setup of automated QA acceptance tests
+    skills:
+      - React
+      - Redux
+      - Inline Styles
+      - Cucumber
+      - Webpack
+      - Babel
+      - NPM
+  - position: Junior Software Architect
+    employee: Signavio GmbH, Berlin
+    startDate: 2015-03-01
+    endDate: 2016-01-31
+    activities:
+      - responsible for transition towards React/#ux-based technology stack
+      - responsible for further improvement of the front end build system & developer experience
+      - organized and conducted developer trainings concerning changes in technologies and work#ow
+    skills:
+      - React
+      - Flux
+      - Webpack
+      - Babel
+      - NPM/NPM Private
+  - position: Junior Software Developer
+    employee: Signavio GmbH, Berlin
+    startDate: 2014-03-01
+    endDate: 2015-02-28
+    activities:
+      - redesigned and reimplemented one of the company's applications in a small agile team
+      - refactored front end build system to use modern build tools and enable unit testing
+      - organized and conducted developer trainings regarding new tooling
+    skills:
+      - Ext/Sencha
+      - Gulp
+      - Less
+      - REST
+      - Karma Test Runner
+      - Mocha
+      - Chai
+  - position: Research Assistant
+    employee: Hasso Plattner Institute, Potsdam
+    startDate: 2013-11-16
+    endDate: 2014-12-15
+    activities:
+      - Supported development of a web-based collaborative canvas
+    skills:
+      - HTML5/Canvas
+      - XMPP
+  - position: Student Software Developer - ECM/Cloud Storage
+    employee: SAPERION AG, Berlin
+    startDate: 2012-07-01
+    endDate: 2013-11-15
+    activities:
+      - implemented a browser single page application for an enterprise cloud storage product from scratch (multiple Scrum teams)
+      - developed concepts for technology choice, architecture and user experience
+      - eastablished unit, integration and automated UI testing for web frontend
+    skills:
+      - HTML5
+      - Backbone
+      - grunt
+      - Less
+      - REST
+      - Selenium (Java)
+education:
+  - degree: Bachelor of Science (IT-Systems Engineering)
+    authority: Hasso Plattner Institute, Potsdam
+    startDate: 2012-10-01
+    endDate: 2016-03-31

@@ -1,4 +1,7 @@
-content: >
-  Telefon: [+49 30 88661649](tel:+493088661649)
-
-  E-Mail: [contact@leoselig.dev](mailto:contact@leoselig.dev)
+labels:
+  phone: Phone
+  email: Email
+  website: Website
+phoneNumber: +49 30 88661649
+emailAddress: contact@leoselig.dev
+websiteURL: https://leoselig.dev

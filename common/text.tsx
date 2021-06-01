@@ -24,7 +24,7 @@ export const Headline2 = styled.h1`
 `;
 
 export const Paragraph = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0;
   white-space: pre-wrap;
 
