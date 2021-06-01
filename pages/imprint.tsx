@@ -17,8 +17,5 @@ const SRoot = styled.div``;
 
 ImprintPage.pageStructure = {
   id: "imprint",
-  type: "SUB_PAGE",
-  Title: function ImprintPageTitle() {
-    return <div>Imprint</div>;
-  },
+  title: "Imprint",
 };

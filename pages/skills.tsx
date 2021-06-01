@@ -49,8 +49,5 @@ export default function SkillsPage() {
 
 SkillsPage.pageStructure = {
   id: "skills",
-  type: "SUB_PAGE",
-  Title: function SkillsPageTitle() {
-    return <div>Skills</div>;
-  },
+  title: "Skills",
 };

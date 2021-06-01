@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode } from "react";
+import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 import {
@@ -205,7 +205,7 @@ const ContentContainer = styled.main`
 `;
 
 export type TPageStructure = {
-  Title: ComponentType<{}>;
+  title: string;
   id: string;
 };
 
@@ -227,7 +227,7 @@ export function PageLayout({
       <HeroImageContainer>{heroImage}</HeroImageContainer>
       <TitleContainer>
         <TrapezoidSwitchTransition elementKey={pageStructure.id}>
-          <pageStructure.Title />
+          {pageStructure.title}
         </TrapezoidSwitchTransition>
       </TitleContainer>
 

@@ -53,8 +53,8 @@ export default function App({ Component, pageProps }: TProps) {
       <Container>
         <GlobalStyles />
         <Head>
-          <title>Leo Selig (.dev)</title>
-          <meta name="description" content={getPageData().meta.description} />
+          <title>{`${pageStructure.title} | Leo Selig (.dev)`}</title>
+          <meta name="description" content={metaData.description} />
           {faviconsHTMLData.map(({ nodeName, attributes }, index) =>
             createElement(nodeName, { ...attributes, key: index })
           )}

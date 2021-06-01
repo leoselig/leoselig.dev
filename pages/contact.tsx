@@ -17,8 +17,5 @@ const SRoot = styled.div``;
 
 ContactPage.pageStructure = {
   id: "constact",
-  type: "SUB_PAGE",
-  Title: function ContactPageTitle() {
-    return <div>Contact</div>;
-  },
+  title: "Contact",
 };
