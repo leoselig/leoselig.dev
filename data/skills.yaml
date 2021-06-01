@@ -1,0 +1,110 @@
+labels:
+  framework: "Frameworks"
+  platform: "Platforms"
+  tool: "Tooling"
+  domain: "Domains"
+  methodology: "Methodology"
+skills:
+  - name: React
+    kinds:
+      - framework
+  - name: Node.js
+    kinds:
+      - platform
+      - tool
+  - name: Contentful
+    kinds:
+      - platform
+  - name: Prismic
+    kinds:
+      - platform
+  - name: Gatsby
+    kinds:
+      - framework
+  - name: Next.js
+    kinds:
+      - framework
+  - name: Babel
+    kinds:
+      - tool
+  - name: Webpack
+    kinds:
+      - tool
+  - name: Flow
+    kinds:
+      - tool
+  - name: TypeScript
+    kinds:
+      - tool
+  - name: Jenkins
+    kinds:
+      - platform
+  - name: GitHub Actions
+    kinds:
+      - platform
+  - name: GitLab CI
+    kinds:
+      - platform
+  - name: RabbitMQ
+    kinds:
+      - framework
+  - name: Express
+    kinds:
+      - framework
+  - name: Styled Components
+    kinds:
+      - framework
+  - name: redux-saga
+    kinds:
+      - framework
+  - name: Redux
+    kinds:
+      - framework
+  - name: Scrum (PSPO I & PSM I)
+    kinds:
+      - methodology
+  - name: Kanban
+    kinds:
+      - methodology
+  - name: TDD
+    kinds:
+      - methodology
+  - name: Jest
+    kinds:
+      - tool
+  - name: Karma
+    kinds:
+      - tool
+  - name: ESLint
+    kinds:
+      - tool
+  - name: Lightroom
+    kinds:
+      - tool
+  - name: WebDriverIO
+    kinds:
+      - framework
+  - name: Cucumber
+    kinds:
+      - framework
+  - name: Selenium
+    kinds:
+      - framework
+  - name: Amazon Web Services (AWS)
+    kinds:
+      - platform
+  - name: Netlify
+    kinds:
+      - platform
+  - name: Web application development
+    kinds:
+      - domain
+  - name: Cryptography (WebCrypto)
+    kinds:
+      - domain
+  - name: Authorization (OpenID & OAuth)
+    kinds:
+      - domain
+  - name: Animations (Web Animation API, CSS animations, react-motion)
+    kinds:
+      - domain

@@ -14,6 +14,7 @@ export default function ImprintPage() {
 const SRoot = styled.div``;
 
 ImprintPage.pageStructure = {
-  id: "imprint",
-  title: "Imprint",
+  id: "cv",
+  omitLayout: true,
+  title: "CV",
 };

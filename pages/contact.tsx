@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-import { getPageData } from "../common/pageData";
+import { contactData } from "../common/pageData";
 import { Markdown } from "../common/Markdown";
-
-const contactPageData = getPageData().contact;
 
 export default function ContactPage() {
   return (
     <SRoot>
-      <Markdown data={contactPageData.content} />
+      <Markdown data={contactData.content} />
     </SRoot>
   );
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Headline2, Paragraph } from "../common/text";
 import {
-  getPageData,
+  skillsData,
   SKILL_KINDS,
   TPageData$Skill,
   TPageData$Skill$Kind,
@@ -14,8 +14,8 @@ const Container = styled.div``;
 type TSkillsByKind = {
   [skillKind in TPageData$Skill$Kind]: TPageData$Skill[];
 };
-const skillsPageData = getPageData().skillsPage;
-const skillsByKinds = skillsPageData.skills.reduce(
+
+const skillsByKinds = skillsData.skills.reduce(
   (allResult, skill) =>
     skill.kinds.reduce(
       (kindResult, kind) => ({
@@ -32,7 +32,7 @@ export default function SkillsPage() {
     <Container>
       {SKILL_KINDS.map((kind) => (
         <Fragment key={kind}>
-          <Headline2>{skillsPageData.labels[kind]}</Headline2>
+          <Headline2>{skillsData.labels[kind]}</Headline2>
           <Paragraph>
             {skillsByKinds[kind].map((skill, index) => (
               <Fragment key={skill.name}>

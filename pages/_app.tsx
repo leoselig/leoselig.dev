@@ -5,7 +5,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import faviconsHTMLData from "../public/favicons/html-head-data.json";
 import { PageLayout, ProfilePhoto, TPageStructure } from "../common/layout";
 import { defaultTheme } from "../common/theme";
-import { getPageData } from "../common/pageData";
+import { metaData } from "../common/pageData";
 
 const GlobalStyles = createGlobalStyle`
   html,

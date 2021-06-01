@@ -1,19 +1,38 @@
-import pageData from "../data/pageData.yaml";
+import yamlMeta from "../data/meta.yaml";
+import yamlSkillsPage from "../data/skills.yaml";
+import yamlAboutMePage from "../data/aboutMe.yaml";
+import yamlContactPage from "../data/contact.yaml";
+import yamlImprintPage from "../data/imprint.yaml";
 
-export function getPageData(): TPageData {
-  return pageData;
-}
+// About me page data
 
-export type TPageData = {
-  meta: { description: string };
-  skillsPage: {
-    labels: { [key in TPageData$Skill$Kind]: string };
-    skills: TPageData$Skill[];
-  };
-  aboutMe: string;
-  imprint: { content: string };
-  contact: { content: string };
+export type TPageData$AboutMe = {
+  content: string;
 };
+
+export const aboutMeData: TPageData$AboutMe = yamlAboutMePage;
+
+export type TPageData$Contact = {
+  content: string;
+};
+
+// Contact page data
+
+export const contactData: TPageData$Contact = yamlContactPage;
+
+export type TPageData$Imprint = {
+  content: string;
+};
+
+// Imprint page data
+
+export const imprintData: TPageData$Imprint = yamlImprintPage;
+
+export type TPageData$Meta = {
+  description: string;
+};
+
+// Sills page data
 
 export const SKILL_KINDS = [
   "domain",
@@ -35,3 +54,14 @@ export type TPageData$Skill = {
   name: string;
   kinds: TPageData$Skill$Kind[];
 };
+
+export type TPageData$Skills = {
+  labels: { [key in TPageData$Skill$Kind]: string };
+  skills: TPageData$Skill[];
+};
+
+export const skillsData: TPageData$Skills = yamlSkillsPage;
+
+// Meta data
+
+export const metaData: TPageData$Meta = yamlMeta;
