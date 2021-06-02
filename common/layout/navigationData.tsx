@@ -36,6 +36,12 @@ export const NAVIGATION_ITEMS: {
     Icon: GitHubIcon,
     appearances: ["footer"],
   },
+  cv: {
+    route: "/cv",
+    title: "CV",
+    appearances: ["footer"],
+    shouldOpenInNewWindow: true,
+  },
   imprint: {
     route: "/imprint",
     title: "Imprint",

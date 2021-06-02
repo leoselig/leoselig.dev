@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { ComponentType, createElement } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, {
+  createGlobalStyle,
+  css,
+  ThemeProvider,
+} from "styled-components";
 
 import faviconsHTMLData from "../public/favicons/html-head-data.json";
 import { PageLayout, ProfilePhoto, TPageStructure } from "../common/layout";
@@ -30,10 +34,15 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ omitLayout: boolean }>`
   height: 100%;
-  width: 100vw;
-  overflow: scroll;
+  width: 100%;
+  ${({ omitLayout }) =>
+    omitLayout
+      ? ""
+      : css`
+          overflow: scroll;
+        `};
 `;
 
 type TPageProps = {};
@@ -48,9 +57,10 @@ export default function App({ Component, pageProps }: TProps) {
   if ("statusCode" in pageProps) {
     return "404";
   }
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container>
+      <Container omitLayout={!!pageStructure.omitLayout}>
         <GlobalStyles />
         <Head>
           <title>{`${pageStructure.title} | Leo Selig (.dev)`}</title>
@@ -62,13 +72,18 @@ export default function App({ Component, pageProps }: TProps) {
             href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
             rel="stylesheet"
           />
+          {pageStructure.renderHeadComponents &&
+            pageStructure.renderHeadComponents()}
         </Head>
-
-        <PageLayout
-          pageStructure={pageStructure}
-          content={<Component {...pageProps} />}
-          heroImage={<ProfilePhoto />}
-        />
+        {pageStructure.omitLayout ? (
+          <Component {...pageProps} />
+        ) : (
+          <PageLayout
+            pageStructure={pageStructure}
+            content={<Component {...pageProps} />}
+            heroImage={<ProfilePhoto />}
+          />
+        )}
       </Container>
     </ThemeProvider>
   );

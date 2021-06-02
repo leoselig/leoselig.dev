@@ -1,4 +1,4 @@
-import { ComponentProps, HTMLProps } from "react";
+import { ComponentProps, HTMLProps, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { ReactMarkdownProps } from "react-markdown/src/ast-to-react";
 import remarkBreaksPlugin from "remark-breaks";
@@ -8,18 +8,33 @@ import styled from "styled-components";
 import { Link, SAnchor } from "./Link";
 import { Headline1, Headline2, Headline3, Paragraph } from "./text";
 
-type TProps = { data: string };
+type TProps = {
+  data: string;
+  components?: ComponentProps<typeof ReactMarkdown>["components"];
+};
 
-export function Markdown({ data }: TProps) {
+export function Markdown({
+  data,
+  components: customComponents,
+  ...otherProps
+}: TProps) {
+  const finalComponents = useMemo(
+    () => ({ ...defaultCmponents, ...customComponents }),
+    [customComponents]
+  );
   return (
-    <ReactMarkdown components={components} remarkPlugins={plugins}>
-      {data}
-    </ReactMarkdown>
+    <SRoot {...otherProps}>
+      <ReactMarkdown components={finalComponents} remarkPlugins={plugins}>
+        {data}
+      </ReactMarkdown>
+    </SRoot>
   );
 }
 
+const SRoot = styled.div``;
+
 const plugins = [remarkBreaksPlugin, remarkDirectivePlugin];
-const components: ComponentProps<typeof ReactMarkdown>["components"] = {
+const defaultCmponents: ComponentProps<typeof ReactMarkdown>["components"] = {
   a: function MarkdownA({
     children,
     href,

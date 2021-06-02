@@ -4,7 +4,7 @@ const baseTheme = {
   colors: {
     light: "#fdfeff",
     dark: "#002641",
-    interactive: "#003c5f",
+    interactive: "#005a96",
     active: "#00c2e4",
     meta: "#859eaf",
   },

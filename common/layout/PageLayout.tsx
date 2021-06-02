@@ -205,8 +205,10 @@ const ContentContainer = styled.main`
 `;
 
 export type TPageStructure = {
+  omitLayout?: boolean;
   title: string;
   id: string;
+  renderHeadComponents?: () => ReactNode;
 };
 
 type TProps = {
