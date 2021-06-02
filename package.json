@@ -32,6 +32,7 @@
     "typescript-dev": "tsc --watch",
     "typescript-ci": "tsc",
     "deploy": "npm run _ts-node -- ./scripts/deploy.ts ",
+    "build-export": "npm run next-build && npm run next-export",
     "generate-favicons": "npm run _ts-node -- ./scripts/generateFavicons.ts"
   },
   "dependencies": {
