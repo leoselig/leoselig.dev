@@ -69,7 +69,7 @@ const SNavigation = styled(Navigation)`
 `;
 
 const SRoot = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100%;
 
   display: grid;
