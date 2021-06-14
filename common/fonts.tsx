@@ -11,7 +11,7 @@ export type TFontStyleConfig = {
   lineHeight: number;
 };
 
-const fontWeightMap: { [weightName in TFontWeight]: number } = {
+export const fontWeightMap: { [weightName in TFontWeight]: number } = {
   bold: 600,
   regular: 400,
 };

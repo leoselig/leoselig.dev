@@ -2,12 +2,6 @@ import { ReactNode } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import styled from "styled-components";
 
-import {
-  ANIMATION_EASING,
-  trapezoidClipPathFullRectangle,
-  trapezoidClipPathHidden,
-} from "./effects";
-
 const TRANSITION_DURATION_MS = 500;
 
 type TProps = {
@@ -15,7 +9,7 @@ type TProps = {
   children: ReactNode;
 };
 
-export function TrapezoidSwitchTransition({ elementKey, children }: TProps) {
+export function OpacitySwitchTransition({ elementKey, children }: TProps) {
   return (
     <SwitchTransition>
       <CSSTransition
@@ -29,21 +23,21 @@ export function TrapezoidSwitchTransition({ elementKey, children }: TProps) {
   );
 }
 
-const TRANSITION_CLASS_NAME = "trapezoid-switch-transition";
+const TRANSITION_CLASS_NAME = "opacity-switch-transition";
 
 const SAnimatedWrapper = styled.div`
-  transition: clip-path ${ANIMATION_EASING} ${TRANSITION_DURATION_MS}ms;
+  transition: opacity ease-in-out ${TRANSITION_DURATION_MS}ms;
   &.${TRANSITION_CLASS_NAME}-enter {
-    clip-path: ${trapezoidClipPathHidden()};
+    opacity: 0;
   }
   &.${TRANSITION_CLASS_NAME}-enter-active {
-    clip-path: ${trapezoidClipPathFullRectangle()};
+    opacity: 1;
   }
 
   &.${TRANSITION_CLASS_NAME}-exit {
-    clip-path: ${trapezoidClipPathFullRectangle()};
+    opacity: 1;
   }
   &.${TRANSITION_CLASS_NAME}-exit-active {
-    clip-path: ${trapezoidClipPathHidden()};
+    opacity: 0;
   }
 `;
