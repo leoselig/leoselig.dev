@@ -10,14 +10,16 @@ import faviconsHTMLData from "../public/favicons/html-head-data.json";
 import { PageLayout, ProfilePhoto, TPageStructure } from "../common/layout";
 import { defaultTheme } from "../common/theme";
 import { metaData } from "../common/pageData";
+import { fontWeightMap } from "../common/fonts";
 
 const GlobalStyles = createGlobalStyle`
   html,
   body {
     padding: 0;
     margin: 0;
-    font-family: "Fira Code", 'Courier New', Courier, monospace;
+    font-family: "Work Sans", 'Courier New', Courier, monospace;
     font-size: 1em;
+    font-weight: ${fontWeightMap.regular};
     color: ${({ theme }) => theme.colors.dark}
   }
 
@@ -68,8 +70,9 @@ export default function App({ Component, pageProps }: TProps) {
           {faviconsHTMLData.map(({ nodeName, attributes }, index) =>
             createElement(nodeName, { ...attributes, key: index })
           )}
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap"
             rel="stylesheet"
           />
           {pageStructure.renderHeadComponents &&

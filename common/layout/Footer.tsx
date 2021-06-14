@@ -23,6 +23,7 @@ export function Footer({ ...otherProps }) {
             key={navigationItem.id}
             to={getLinkFromNavigationItem(navigationItem)}
             target={navigationItem.shouldOpenInNewWindow ? "_blank" : ""}
+            enableBackgroundEffect={!navigationItem.Icon}
           >
             {navigationItem.Icon ? (
               <navigationItem.Icon title={navigationItem.title} />

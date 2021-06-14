@@ -50,13 +50,13 @@ const defaultCmponents: ComponentProps<typeof ReactMarkdown>["components"] = {
     return <SMeta {...otherProps}>{children}</SMeta>;
   },
   h1: function MarkdownH1({ children, ...otherProps }) {
-    return <Headline1 {...otherProps}>{children}</Headline1>;
+    return <SMDHeadline1 {...otherProps}>{children}</SMDHeadline1>;
   },
   h2: function MarkdownH2({ children, ...otherProps }) {
-    return <Headline2 {...otherProps}>{children}</Headline2>;
+    return <SMDHeadline2 {...otherProps}>{children}</SMDHeadline2>;
   },
   h3: function MarkdownH3({ children, ...otherProps }) {
-    return <Headline3 {...otherProps}>{children}</Headline3>;
+    return <SMDHeadline3 {...otherProps}>{children}</SMDHeadline3>;
   },
   h4: function MarkdownH4({ children, ...otherProps }) {
     return <table {...otherProps}>{children}</table>;
@@ -92,6 +92,12 @@ const defaultCmponents: ComponentProps<typeof ReactMarkdown>["components"] = {
     return <table {...otherProps}>{children}</table>;
   },
 };
+
+const SMDHeadline1 = styled(Headline1)``;
+
+const SMDHeadline2 = styled(Headline2)``;
+
+const SMDHeadline3 = styled(Headline3)``;
 
 const SMeta = styled.em`
   font-style: normal;

@@ -1,22 +1,67 @@
 import NextLink from "next/link";
 import { ReactNode, ComponentProps, HTMLProps } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const SAnchor = styled.a`
+import { useHoverState } from "./useHoverState";
+
+const BACKGROUND_BLEED_SIZE_EM = 0.2;
+
+const activeStyles = css`
+  color: ${({ theme }) => theme.colors.light};
+  transition-duration: 300ms, 300ms;
+
+  &:after {
+    transform: scaleX(1);
+    transition-duration: 300ms, 300ms;
+  }
+`;
+
+export const SAnchor = styled.a<{
+  showActive?: boolean;
+  enableBackgroundEffect?: boolean;
+}>`
   cursor: pointer;
-  transition: color ease-in-out 300ms;
+  transition: color ease-in-out 300ms, background-color ease-in-out 300ms;
   color: ${({ theme }) => theme.colors.interactive};
   text-decoration: underline;
+  position: relative;
+  z-index: 0;
+
+  &:after {
+    content: " ";
+    display: ${({ enableBackgroundEffect = true }) =>
+      enableBackgroundEffect ? "block" : "none"};
+
+    position: absolute;
+    top: -${BACKGROUND_BLEED_SIZE_EM}em;
+    bottom: -${BACKGROUND_BLEED_SIZE_EM}em;
+    left: -${BACKGROUND_BLEED_SIZE_EM}em;
+    right: -${BACKGROUND_BLEED_SIZE_EM}em;
+    z-index: -1;
+    background-color: ${({ theme }) => theme.colors.dark};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform ease-in-out 300ms, background-color ease-in-out 300ms;
+  }
+
+  ${({ showActive = false }) => showActive && activeStyles}
 
   &:hover {
-    color: ${({ theme }) => theme.colors.active};
-    transition: color ease-in-out 100ms;
+    ${activeStyles};
+  }
+
+  &:active {
+    &:after {
+      background-color: ${({ theme }) => theme.colors.active};
+    }
   }
 `;
 
 type TProps = {
   to: string;
   children: ReactNode;
+  showActive?: boolean;
+  enableBackgroundEffect?: boolean;
 } & Pick<HTMLProps<typeof SAnchor>, "target"> &
   Pick<ComponentProps<typeof NextLink>, "passHref" | "prefetch">;
 
@@ -26,11 +71,23 @@ export function Link({
   passHref,
   target,
   prefetch,
+  showActive = false,
+  enableBackgroundEffect = true,
   ...otherProps
 }: TProps) {
+  const { isHovered, ...hoverProps } = useHoverState();
+
   if (to.match(/^[a-zA-Z][a-zA-Z0-9\-\+\.]+:/)) {
     return (
-      <SAnchor href={to} target="_blank" rel="noopener" {...otherProps}>
+      <SAnchor
+        href={to}
+        target="_blank"
+        rel="noopener"
+        showActive={showActive || isHovered}
+        enableBackgroundEffect={enableBackgroundEffect}
+        {...hoverProps}
+        {...otherProps}
+      >
         {children}
       </SAnchor>
     );
@@ -43,7 +100,13 @@ export function Link({
       passHref={passHref ?? hasTarget}
       prefetch={prefetch ?? !hasTarget}
     >
-      <SAnchor target={target} {...otherProps}>
+      <SAnchor
+        target={target}
+        showActive={showActive || isHovered}
+        enableBackgroundEffect={enableBackgroundEffect}
+        {...hoverProps}
+        {...otherProps}
+      >
         {children}
       </SAnchor>
     </NextLink>
