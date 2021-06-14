@@ -2,14 +2,16 @@ import { css, FlattenSimpleInterpolation } from "styled-components";
 
 export type TViewportType = "phone" | "portrait" | "landscape" | "large";
 
-export type ResponsiveMap<TValue, TOptional extends boolean = false> =
-  TOptional extends true
-    ? {
-        [size in TViewportType]?: TValue;
-      }
-    : {
-        [size in TViewportType]: TValue;
-      };
+export type ResponsiveMap<
+  TValue,
+  TOptional extends boolean = false
+> = TOptional extends true
+  ? {
+      [size in TViewportType]?: TValue;
+    }
+  : {
+      [size in TViewportType]: TValue;
+    };
 
 const BREAKPOINT_PORTRAIT = 768;
 const BREAKPOINT_LANDSCAPE = 1024;
