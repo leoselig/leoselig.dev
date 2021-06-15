@@ -211,8 +211,11 @@ const SSection = styled.section`
   }
 `;
 
-const SSectionTitle = styled(Headline1)`
+const SSectionTitle = styled(Headline1).attrs(() => ({
+  enableBackgroundEffect: false,
+}))`
   color: ${({ theme }) => theme.colors.interactive};
+  background-color: transparent;
   text-transform: uppercase;
   border-bottom: 0.125rem solid ${({ theme }) => theme.colors.interactive};
   margin-bottom: ${SPACE_L};
@@ -340,7 +343,12 @@ const STimelineItemRoot = styled.section`
   }
 `;
 
-const STimelineItemTitle = styled(Headline2)`
+const STimelineItemTitle = styled(Headline2).attrs(() => ({
+  enableBackgroundEffect: false,
+}))`
+  color: ${({ theme }) => theme.colors.dark};
+  background-color: transparent;
+
   grid-area: title;
   font-size: 1.2rem;
 `;

@@ -4,36 +4,39 @@ import { fontWeightMap } from "./fonts";
 import { pageXPadding } from "./layout/pageLayoutConfig";
 import { responsive } from "./responsive";
 
-const defaultHheadlienStyles = css`
+const defaultHeadlineStyles = css<{ enableBackgroundEffect?: boolean }>`
   margin: 0;
 
-  background-color: ${({ theme }) => theme.colors.dark};
-  color: ${({ theme }) => theme.colors.light};
-  width: fit-content;
-  padding: 0.1em;
-
-  ${responsive({
-    phone: css`
-      margin-left: calc(-1 * ${pageXPadding.phone});
-      padding-left: ${pageXPadding.phone};
-    `,
-    portrait: css`
-      margin-left: calc(-1 * ${pageXPadding.portrait});
-      padding-left: ${pageXPadding.portrait};
-    `,
-    landscape: css`
-      margin-left: calc(-1 * ${pageXPadding.landscape});
-      padding-left: ${pageXPadding.landscape};
-    `,
-    large: css`
-      margin-left: calc(-1 * ${pageXPadding.large});
-      padding-left: ${pageXPadding.large};
-    `,
-  })}
+  ${({ enableBackgroundEffect = true }) =>
+    enableBackgroundEffect &&
+    css`
+      background-color: ${({ theme }) => theme.colors.dark};
+      color: ${({ theme }) => theme.colors.light};
+      width: fit-content;
+      padding: 0.1em;
+      ${responsive({
+        phone: css`
+          margin-left: calc(-1 * ${pageXPadding.phone});
+          padding-left: ${pageXPadding.phone};
+        `,
+        portrait: css`
+          margin-left: calc(-1 * ${pageXPadding.portrait});
+          padding-left: ${pageXPadding.portrait};
+        `,
+        landscape: css`
+          margin-left: calc(-1 * ${pageXPadding.landscape});
+          padding-left: ${pageXPadding.landscape};
+        `,
+        large: css`
+          margin-left: calc(-1 * ${pageXPadding.large});
+          padding-left: ${pageXPadding.large};
+        `,
+      })}
+    `}
 `;
 
-export const Headline1 = styled.h1`
-  ${defaultHheadlienStyles}
+export const Headline1 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+  ${defaultHeadlineStyles}
   font-size: 2.5rem;
 
   ${responsive({
@@ -43,8 +46,8 @@ export const Headline1 = styled.h1`
   })}
 `;
 
-export const Headline3 = styled.h1`
-  ${defaultHheadlienStyles}
+export const Headline3 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+  ${defaultHeadlineStyles}
   font-size: 1.5rem;
 
   ${responsive({
@@ -54,8 +57,8 @@ export const Headline3 = styled.h1`
   })}
 `;
 
-export const Headline2 = styled.h1`
-  ${defaultHheadlienStyles}
+export const Headline2 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+  ${defaultHeadlineStyles}
   font-size: 2rem;
 
   ${responsive({
