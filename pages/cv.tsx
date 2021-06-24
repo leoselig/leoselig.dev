@@ -309,11 +309,28 @@ function CVTimelineItem({
   );
 }
 
+CVPrintPage.pageStructure = {
+  id: "cv",
+  omitLayout: true,
+  title: "CV",
+  renderHeadComponents: () => {
+    return (
+      <>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
+      </>
+    );
+  },
+};
+
 const printableMarkdownComponents = {
   a: function PrintableMarkdownA({
     href,
   }: ReactMarkdownProps & HTMLProps<"a">) {
-    return <SAnchor href="">{href ?? ""}</SAnchor>;
+    return <SAnchor href={href}>{href ?? ""}</SAnchor>;
   },
 };
 
@@ -370,19 +387,3 @@ const STimelineItemSkills = styled.div`
 
 const SRoot = styled.div``;
 
-CVPrintPage.pageStructure = {
-  id: "cv",
-  omitLayout: true,
-  title: "CV",
-  renderHeadComponents: () => {
-    return (
-      <>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
-          rel="stylesheet"
-        />
-      </>
-    );
-  },
-};
