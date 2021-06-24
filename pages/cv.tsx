@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Fragment, HTMLProps, useMemo } from "react";
+import { Fragment, HTMLProps, useCallback, useMemo } from "react";
 import { ReactMarkdownProps } from "react-markdown/src/ast-to-react";
 
 import {
@@ -15,12 +15,17 @@ import { Markdown } from "../common/Markdown";
 import { Headline1, Headline2 } from "../common/text";
 import { SPACE_L, SPACE_M, SPACE_S } from "../common/theme";
 import { Link, SAnchor } from "../common/Link";
+import { fontWeightMap } from "../common/fonts";
 
 export default function CVPrintPage() {
+  const handleClickPrint = useCallback(() => window.print(), []);
   return (
     <>
       <GlobalStylesPrint />
       <SRoot>
+        <SPrintInstructionText onClick={handleClickPrint}>
+          Print me!
+        </SPrintInstructionText>
         <SHeader>
           <SName>{cvData.header.name}</SName>
           <STitle>{cvData.header.title}</STitle>
@@ -140,6 +145,7 @@ const GlobalStylesPrint = createGlobalStyle`
   }
   html {
     width: 210mm;
+    margin: auto;
   }
 
   body {
@@ -387,3 +393,20 @@ const STimelineItemSkills = styled.div`
 
 const SRoot = styled.div``;
 
+const SPrintInstructionText = styled(SAnchor)`
+  display: none;
+  @media not print {
+    display: block;
+  }
+
+  position: fixed;
+  top: 30mm;
+  right: 10mm;
+  width: fit-content;
+  text-transform: uppercase;
+  transform: rotate(10deg);
+  transform-origin: top left;
+  font-size: 2.5rem;
+  font-weight: ${fontWeightMap.bold};
+  text-decoration: none;
+`;
