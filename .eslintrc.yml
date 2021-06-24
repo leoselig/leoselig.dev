@@ -12,6 +12,9 @@ plugins:
   - import
   - "@typescript-eslint/eslint-plugin"
 
+env:
+  browser: true
+
 settings:
   react:
     version: "detect"
