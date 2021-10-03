@@ -6,6 +6,9 @@ module.exports = withOptimizedImages({
   responsive: {
     adapter: require("responsive-loader/sharp"),
   },
+  images: {
+    disableStaticImages: true,
+  },
   productionBrowserSourceMaps: false,
   webpack: function (config) {
     config.module.rules.push({
