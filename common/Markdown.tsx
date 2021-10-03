@@ -1,6 +1,5 @@
-import { ComponentProps, HTMLProps, useMemo } from "react";
-import ReactMarkdown from "react-markdown";
-import { ReactMarkdownProps } from "react-markdown/src/ast-to-react";
+import { ComponentProps, useMemo } from "react";
+import ReactMarkdown, { Components } from "react-markdown";
 import remarkBreaksPlugin from "remark-breaks";
 import remarkDirectivePlugin from "remark-directive";
 import styled from "styled-components";
@@ -34,62 +33,28 @@ export function Markdown({
 const SRoot = styled.div``;
 
 const plugins = [remarkBreaksPlugin, remarkDirectivePlugin];
-const defaultCmponents: ComponentProps<typeof ReactMarkdown>["components"] = {
-  a: function MarkdownA({
-    children,
-    href,
-    ...otherProps
-  }: ReactMarkdownProps & HTMLProps<"a">) {
+const defaultCmponents: Components = {
+  a: function MarkdownA({ children, ref, href, ...otherProps }) {
     return (
       <Link to={href ?? ""} {...otherProps}>
         {children}
       </Link>
     );
   },
-  em: function MarkdownEM({ children, ...otherProps }) {
+  em: function MarkdownEM({ children, ref, ...otherProps }) {
     return <SMeta {...otherProps}>{children}</SMeta>;
   },
-  h1: function MarkdownH1({ children, ...otherProps }) {
+  h1: function MarkdownH1({ children, ref, ...otherProps }) {
     return <SMDHeadline1 {...otherProps}>{children}</SMDHeadline1>;
   },
-  h2: function MarkdownH2({ children, ...otherProps }) {
+  h2: function MarkdownH2({ children, ref, ...otherProps }) {
     return <SMDHeadline2 {...otherProps}>{children}</SMDHeadline2>;
   },
-  h3: function MarkdownH3({ children, ...otherProps }) {
+  h3: function MarkdownH3({ children, ref, ...otherProps }) {
     return <SMDHeadline3 {...otherProps}>{children}</SMDHeadline3>;
   },
-  h4: function MarkdownH4({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  h5: function MarkdownH5({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  h6: function MarkdownH6({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  hr: function MarkdownHR({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  img: function MarkdownImg({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  li: function MarkdownLi({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  ol: function MarkdownOl({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  p: function MarkdownP({ children, ...otherProps }) {
+  p: function MarkdownP({ children, ref, ...otherProps }) {
     return <Paragraph {...otherProps}>{children}</Paragraph>;
-  },
-  pre: function MarkdownPre({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
-  },
-  strong: function MarkdownStrong({ children, ...otherProps }) {
-    return <strong {...otherProps}>{children}</strong>;
-  },
-  ul: function MarkdownUL({ children, ...otherProps }) {
-    return <table {...otherProps}>{children}</table>;
   },
 };
 

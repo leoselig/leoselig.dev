@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Fragment, HTMLProps, useCallback, useMemo } from "react";
-import { ReactMarkdownProps } from "react-markdown/src/ast-to-react";
+import { Fragment, useCallback, useMemo } from "react";
+import { Components } from "react-markdown";
 
 import {
   certificationsData,
@@ -332,10 +332,8 @@ CVPrintPage.pageStructure = {
   },
 };
 
-const printableMarkdownComponents = {
-  a: function PrintableMarkdownA({
-    href,
-  }: ReactMarkdownProps & HTMLProps<"a">) {
+const printableMarkdownComponents: Components = {
+  a: function PrintableMarkdownA({ href }) {
     return <SAnchor href={href}>{href ?? ""}</SAnchor>;
   },
 };
