@@ -63,14 +63,13 @@ type TProps = {
   showActive?: boolean;
   enableBackgroundEffect?: boolean;
 } & Pick<HTMLProps<typeof SAnchor>, "target"> &
-  Pick<ComponentProps<typeof NextLink>, "passHref" | "prefetch">;
+  Pick<ComponentProps<typeof NextLink>, "passHref">;
 
 export function Link({
   to,
   children,
   passHref,
   target,
-  prefetch,
   showActive = false,
   enableBackgroundEffect = true,
   ...otherProps
@@ -95,11 +94,7 @@ export function Link({
   const hasTarget = !!target;
 
   return (
-    <NextLink
-      href={to}
-      passHref={passHref ?? hasTarget}
-      prefetch={prefetch ?? !hasTarget}
-    >
+    <NextLink href={to} passHref={passHref ?? hasTarget}>
       <SAnchor
         target={target}
         showActive={showActive || isHovered}
