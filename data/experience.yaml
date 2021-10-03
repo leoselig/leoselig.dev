@@ -1,4 +1,15 @@
 projects:
+  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
+    startDate: 2021-07-01
+    endDate: 2021-07-31
+    activities:
+      - built new administration app for TIKI SUP ([website](https://tiki-sup.com))
+      - created UI concept based on provided use cases
+      - implemented app against existing API
+    skills:
+      - React
+      - Material UI
+      - Netlify
   - client: advalyze, Berlin
     startDate: 2021-03-08
     endDate: 2021-05-31
