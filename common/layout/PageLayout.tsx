@@ -26,25 +26,26 @@ const HERO_IMAGE_SIZE = {
 };
 
 const PAGE_TOP_PADDING = SPACE_XL;
+const PAGE_TOP_PADDING_PHONE = pageXPadding.phone;
 
 const SNavigation = styled(Navigation)`
   grid-area: navigation;
-  align-self: flex-start;
+  align-self: flex-end;
 
   ${responsive({
     phone: css`
-      padding: ${pageXPadding.phone} calc(${pageXPadding.phone}) ${SPACE_M}
-        ${SPACE_M};
+      align-self: flex-start;
+      padding: 0 calc(${pageXPadding.portrait}) ${SPACE_M} ${SPACE_M};
     `,
     portrait: css`
-      padding: ${PAGE_TOP_PADDING} calc(${pageXPadding.portrait}) ${SPACE_M}
-        ${SPACE_M};
+      align-self: flex-start;
+      padding: 0 calc(${pageXPadding.portrait}) ${SPACE_M} ${SPACE_M};
     `,
     landscape: css`
-      padding: ${PAGE_TOP_PADDING} ${pageXPadding.large} 0 0;
+      padding: 0 ${pageXPadding.large} 0 0;
     `,
     large: css`
-      padding: ${PAGE_TOP_PADDING} ${pageXPadding.large} 0 0;
+      padding: 0 ${pageXPadding.large} 0 0;
     `,
   })}
 `;
@@ -61,44 +62,18 @@ const SRoot = styled.div`
   transition: grid-template-rows ease-in-out 200ms,
     grid-template-columns ease-in-out 200ms;
 
+  padding-top: ${PAGE_TOP_PADDING};
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  grid-template-rows: min-content auto auto;
+
   ${responsive({
     phone: css`
-      grid-template-areas:
-        "hero-image navigation"
-        "title title"
-        "content content"
-        "footer footer";
-      grid-template-rows: max-content min-content auto auto;
-      grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+      padding-top: ${PAGE_TOP_PADDING_PHONE};
     `,
-    portrait: css`
-      grid-template-areas:
-        "hero-image navigation"
-        "title title"
-        "content content"
-        "footer footer";
-      grid-template-rows: max-content min-content auto auto;
-      grid-template-columns: minmax(auto, 2fr) minmax(auto, 3fr);
-    `,
-    landscape: css`
-      grid-template-areas:
-        "hero-image navigation"
-        "hero-image title"
-        "content content"
-        "footer footer";
-      grid-template-rows: max-content min-content auto auto;
-      grid-template-columns: min-content 1fr;
-    `,
-    large: css`
-      grid-template-areas:
-        "hero-image navigation"
-        "hero-image title"
-        "content content"
-        "footer footer";
-      grid-template-rows: max-content min-content auto auto;
-      grid-template-columns: min-content 1fr;
-    `,
-  })};
+  })}
 `;
 
 const HeroImageContainer = styled.div`
@@ -106,24 +81,24 @@ const HeroImageContainer = styled.div`
 
   ${responsive({
     phone: css`
-      margin: ${pageXPadding.phone} 0 0 ${pageXPadding.phone};
+      margin: 0 0 0 ${pageXPadding.phone};
       align-self: flex-start;
       min-width: ${HERO_IMAGE_SIZE.phone};
       min-height: ${HERO_IMAGE_SIZE.phone};
     `,
     portrait: css`
-      margin: ${PAGE_TOP_PADDING} ${SPACE_L} 0 ${pageXPadding.portrait};
+      margin: 0 ${SPACE_L} 0 ${pageXPadding.portrait};
       align-self: flex-start;
       min-width: ${HERO_IMAGE_SIZE.portrait};
       min-height: ${HERO_IMAGE_SIZE.portrait}; ;
     `,
     landscape: css`
-      margin: ${PAGE_TOP_PADDING} ${SPACE_L} 0 ${pageXPadding.landscape};
+      margin: 0 ${SPACE_L} 0 ${pageXPadding.landscape};
       width: ${HERO_IMAGE_SIZE.landscape};
       height: ${HERO_IMAGE_SIZE.landscape};
     `,
     large: css`
-      margin: ${PAGE_TOP_PADDING} ${SPACE_L} 0 ${pageXPadding.large};
+      margin: 0 ${SPACE_L} 0 ${pageXPadding.large};
       width: ${HERO_IMAGE_SIZE.large};
       height: ${HERO_IMAGE_SIZE.large};
     `,
@@ -151,12 +126,10 @@ const TitleContainer = styled.div`
       display: none;
     `,
     landscape: css`
-      transform: translateY(0.13em);
-      margin-top: ${SPACE_XL};
+      transform: translateY(-0.13em);
     `,
     large: css`
-      transform: translateY(0.13em);
-      margin-top: ${SPACE_XL};
+      transform: translateY(-0.13em);
     `,
   })}
 `;
@@ -202,13 +175,11 @@ export function PageLayout({
 }: TProps) {
   return (
     <SRoot {...otherProps}>
-      <SNavigation />
-      <HeroImageContainer>{heroImage}</HeroImageContainer>
-      <TitleContainer>
-        <OpacitySwitchTransition elementKey={pageStructure.id}>
-          {pageStructure.title}
-        </OpacitySwitchTransition>
-      </TitleContainer>
+      <SHeader>
+        <TitleContainer>Leo Selig</TitleContainer>
+        <SNavigation />
+        <HeroImageContainer>{heroImage}</HeroImageContainer>
+      </SHeader>
 
       <ContentContainer>
         <OpacitySwitchTransition elementKey={pageStructure.id}>
@@ -223,4 +194,35 @@ export function PageLayout({
 
 const SFooter = styled(Footer)`
   grid-area: footer;
+`;
+
+const SHeader = styled.header`
+  display: grid;
+
+  ${responsive({
+    phone: css`
+      grid-template-areas: "hero-image navigation";
+      grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+    `,
+    portrait: css`
+      grid-template-areas: "hero-image navigation";
+      grid-template-columns: minmax(auto, 2fr) minmax(auto, 3fr);
+    `,
+    landscape: css`
+      grid-template-areas:
+        "hero-image ."
+        "hero-image title"
+        "hero-image navigation";
+      grid-template-rows: 1fr auto 1fr;
+      grid-template-columns: min-content 1fr;
+    `,
+    large: css`
+      grid-template-areas:
+        "hero-image ."
+        "hero-image title"
+        "hero-image navigation";
+      grid-template-rows: 1fr auto 1fr;
+      grid-template-columns: min-content 1fr;
+    `,
+  })};
 `;

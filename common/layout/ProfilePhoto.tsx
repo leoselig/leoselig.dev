@@ -33,7 +33,7 @@ export function ProfilePhoto({ ...otherProps }) {
       <SPicture>
         <source srcSet={profileImageUriWebPSizes.srcSet} type="image/webp" />
         <source srcSet={profileImageJpegSizes.srcSet} type="image/jpeg" />
-        <SImage alt="Picture of me" />
+        <SImage alt="Picture of Leo Selig" />
       </SPicture>
     </SAspectRatio>
   );
