@@ -31,7 +31,11 @@ export const NavigationItem = memo(function NavigationItem({
 }: TProps) {
   return (
     <Item {...otherProps}>
-      <SLink to={route} showActive={isCurrentRoute}>
+      <SLink
+        to={route}
+        showActive={isCurrentRoute}
+        makeBackgroundPaddingBleed={false}
+      >
         {title}
       </SLink>
     </Item>

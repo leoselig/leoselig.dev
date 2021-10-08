@@ -58,5 +58,5 @@ export const FONT_STYLES_PAGE_LINK = createResponsiveFontStyles({
     letterSpacing: 0.01,
     lineHeight: 32,
   },
-  large: { size: 24, weight: "regular", letterSpacing: -0.01, lineHeight: 32 },
+  large: { size: 24, weight: "regular", letterSpacing: 0.01, lineHeight: 32 },
 });

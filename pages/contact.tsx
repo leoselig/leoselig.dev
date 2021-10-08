@@ -38,6 +38,6 @@ const SContactData = styled.div`
 `;
 
 ContactPage.pageStructure = {
-  id: "constact",
-  title: "Contact",
+  id: "contact",
+  title: "Leo Selig",
 };

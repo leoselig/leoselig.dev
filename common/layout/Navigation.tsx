@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled, { css } from "styled-components";
 
 import { responsive } from "../responsive";
-import { SPACE_L } from "../theme";
+import { SPACE_L, SPACE_M } from "../theme";
 
 import { NavigationItem } from "./NavigationItem";
 import { useNavigationItems } from "./navigationData";
@@ -59,6 +59,11 @@ const SNavigationItem = styled(NavigationItem)`
         margin-left: 0;
       }
     `,
+    large: css`
+      &:first-child {
+        margin-left: 0;
+      }
+    `,
   })}
 `;
 
@@ -69,7 +74,7 @@ const verticalContainerStyle = css`
     flex-basis: 100%;
 
     &:not(:last-child) {
-      margin-bottom: ${SPACE_L};
+      margin-bottom: ${SPACE_M};
     }
   }
 `;
