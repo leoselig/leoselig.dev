@@ -20,7 +20,7 @@
   "scripts": {
     "_ts-node": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node",
     "dev": "next dev",
-    "next-build": "next build",
+    "next-build": "next build && next-sitemap",
     "start": "next start",
     "next-export": "next export",
     "serve": "serve ./out",
@@ -72,6 +72,7 @@
     "lighthouse": "^8.5.1",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
+    "next-sitemap": "^1.6.179",
     "prettier": "^2.4.1",
     "shelljs": "^0.8.4",
     "ts-node": "^10.2.1",
