@@ -1,4 +1,37 @@
 projects:
+  - client: Fahrschul- und Transport GmbH Havelland
+    startDate: 2021-10-24
+    endDate: 2021-11-30
+    activities:
+      - created UI/UX concept for an upload portal for driving documents (web app)
+      - implemented the web app (incl. CI/CD)
+    skills:
+      - React
+      - JWT
+      - styled-components
+      - GitHub Actions, Netlify
+  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
+    startDate: 2021-12-13
+    endDate: 2021-01-31
+    activities:
+      - ported existing shop widget from Flutter to React
+      - created foundation (repo setup, technology choice, initial structure, CI/CD)
+      - implemented some features & supported developer in gaining know-how of the stack
+    skills:
+      - React
+      - styled-components
+      - Netlify
+  - client: Wonder Technologies GmbH
+    startDate: 2021-08-16
+    endDate: 2021-11-11
+    activities:
+      - supported existing team in developing [wonder.me](https://www.wonder.me), an online meeting platform
+      - developed new features in the existing React/Canvas-based app either independently or in pair programming
+      - conducted performance analysis and implemented according improvements
+    skills:
+      - React
+      - SASS
+      - Canvas
   - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
     startDate: 2021-07-01
     endDate: 2021-07-31
