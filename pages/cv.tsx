@@ -152,12 +152,6 @@ const GlobalStylesPrint = createGlobalStyle`
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 4.2mm;
   }
-
-  @media not print {
-    body {
-      margin: 5mm;
-    }
-  }
 `;
 
 const SHeader = styled.header`
@@ -389,7 +383,11 @@ const STimelineItemSkills = styled.div`
   grid-area: skills;
 `;
 
-const SRoot = styled.div``;
+const SRoot = styled.div`
+  @media not print {
+    padding: 5mm;
+  }
+`;
 
 const SPrintInstructionText = styled(SAnchor)`
   display: none;
