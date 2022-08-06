@@ -34,26 +34,26 @@ const SRoot = styled.div``;
 
 const plugins = [remarkBreaksPlugin, remarkDirectivePlugin];
 const defaultCmponents: Components = {
-  a: function MarkdownA({ children, ref, href, ...otherProps }) {
+  a: function MarkdownA({ children, href, ...otherProps }) {
     return (
       <Link to={href ?? ""} {...otherProps}>
         {children}
       </Link>
     );
   },
-  em: function MarkdownEM({ children, ref, ...otherProps }) {
+  em: function MarkdownEM({ children, ...otherProps }) {
     return <SMeta {...otherProps}>{children}</SMeta>;
   },
-  h1: function MarkdownH1({ children, ref, ...otherProps }) {
+  h1: function MarkdownH1({ children, ...otherProps }) {
     return <SMDHeadline1 {...otherProps}>{children}</SMDHeadline1>;
   },
-  h2: function MarkdownH2({ children, ref, ...otherProps }) {
+  h2: function MarkdownH2({ children, ...otherProps }) {
     return <SMDHeadline2 {...otherProps}>{children}</SMDHeadline2>;
   },
-  h3: function MarkdownH3({ children, ref, ...otherProps }) {
+  h3: function MarkdownH3({ children, ...otherProps }) {
     return <SMDHeadline3 {...otherProps}>{children}</SMDHeadline3>;
   },
-  p: function MarkdownP({ children, ref, ...otherProps }) {
+  p: function MarkdownP({ children, ...otherProps }) {
     return <Paragraph {...otherProps}>{children}</Paragraph>;
   },
 };

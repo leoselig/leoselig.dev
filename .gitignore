@@ -35,3 +35,6 @@ yarn-error.log*
 
 # All reports
 /_reports
+
+# Typescript
+tsconfig.tsbuildinfo
