@@ -7,7 +7,7 @@ import favicons from "favicons";
 removeSync("./public/favicons");
 
 favicons(
-  "./public/logo-square.svg",
+  "./public/profile-photo-black-white-contrast.svg",
   {
     path: "/favicons",
     logging: true,
