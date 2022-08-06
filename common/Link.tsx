@@ -86,7 +86,7 @@ type TProps = {
 export function Link({
   to,
   children,
-  passHref,
+  passHref = true,
   target,
   showActive = false,
   enableBackgroundEffect = true,
@@ -111,10 +111,9 @@ export function Link({
       </SAnchor>
     );
   }
-  const hasTarget = !!target;
 
   return (
-    <NextLink href={to} passHref={passHref ?? hasTarget}>
+    <NextLink href={to} passHref={passHref}>
       <SAnchor
         target={target}
         showActive={showActive || isHovered}
