@@ -99,6 +99,9 @@ skills:
   - name: Web application development
     kinds:
       - domain
+  - name: Backend development (Node.js)
+    kinds:
+      - domain
   - name: Cryptography (WebCrypto)
     kinds:
       - domain
@@ -108,3 +111,6 @@ skills:
   - name: Animations (Web Animation API, CSS animations, react-motion)
     kinds:
       - domain
+  - name: PostgreSQL
+    kinds:
+      - platform
