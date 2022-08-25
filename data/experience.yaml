@@ -1,4 +1,31 @@
 projects:
+  - client: culture4life GmbH
+    startDate: 2022-02-16
+    endDate: 2022-06-30
+    activities:
+      - suporting existing [Luca](https://www.luca-app.de) Backend team for new payment feature
+      - feature development in existing Node.js backend
+      - technical coordination and backend-side implementation of device attestation (App Attest, SafetyNet & Android Key Attestation)
+      - writing and reviewing RFCs
+    skills:
+      - Node.js
+      - express
+      - App Attest
+      - SafetyNet Attestation API
+      - Android Key Attestation
+      - RabbitMQ
+      - PostgreSQL
+  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
+    startDate: 2021-12-13
+    endDate: 2021-01-31
+    activities:
+      - ported existing shop widget from Flutter to React
+      - created foundation (repo setup, technology choice, initial structure, CI/CD)
+      - implemented some features & supported developer in gaining know-how of the stack
+    skills:
+      - React
+      - styled-components
+      - Netlify
   - client: Fahrschul- und Transport GmbH Havelland
     startDate: 2021-10-24
     endDate: 2021-11-30
