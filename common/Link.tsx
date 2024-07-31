@@ -16,11 +16,13 @@ const activeStyles = css`
   }
 `;
 
-export const SAnchor = styled.a<{
-  showActive?: boolean;
-  enableBackgroundEffect?: boolean;
-  makeBackgroundPaddingBleed?: boolean;
-}>`
+export type LinkCssPropsType = {
+  $showActive?: boolean;
+  $enableBackgroundEffect?: boolean;
+  $makeBackgroundPaddingBleed?: boolean;
+};
+
+export const linkCss = css<LinkCssPropsType>`
   cursor: pointer;
   transition:
     color ease-in-out 300ms,
@@ -32,8 +34,8 @@ export const SAnchor = styled.a<{
 
   &:after {
     content: " ";
-    display: ${({ enableBackgroundEffect = true }) =>
-      enableBackgroundEffect ? "block" : "none"};
+    display: ${({ $enableBackgroundEffect = true }) =>
+      $enableBackgroundEffect ? "block" : "none"};
 
     position: absolute;
     z-index: -1;
@@ -45,8 +47,8 @@ export const SAnchor = styled.a<{
       background-color ease-in-out 300ms;
   }
 
-  ${({ makeBackgroundPaddingBleed = true }) =>
-    makeBackgroundPaddingBleed
+  ${({ $makeBackgroundPaddingBleed = true }) =>
+    $makeBackgroundPaddingBleed
       ? css`
           &:after {
             top: -${BACKGROUND_BLEED_SIZE_EM}em;
@@ -65,7 +67,7 @@ export const SAnchor = styled.a<{
           }
         `};
 
-  ${({ showActive = false }) => showActive && activeStyles}
+  ${({ $showActive = false }) => $showActive && activeStyles}
 
   &:hover {
     ${activeStyles};

@@ -36,11 +36,11 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-const Container = styled.div<{ omitLayout: boolean }>`
+const Container = styled.div<{ $omitLayout: boolean }>`
   height: 100%;
   width: 100%;
-  ${({ omitLayout }) =>
-    omitLayout
+  ${({ $omitLayout }) =>
+    $omitLayout
       ? ""
       : css`
           overflow: scroll;
@@ -62,7 +62,7 @@ export default function App({ Component, pageProps }: TProps) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container omitLayout={!!pageStructure.omitLayout}>
+      <Container $omitLayout={!!pageStructure.omitLayout}>
         <GlobalStyles />
         <Head>
           <title>{`${pageStructure.title} | Leo Selig (.dev)`}</title>
