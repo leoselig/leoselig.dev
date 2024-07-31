@@ -22,7 +22,9 @@ export const SAnchor = styled.a<{
   makeBackgroundPaddingBleed?: boolean;
 }>`
   cursor: pointer;
-  transition: color ease-in-out 300ms, background-color ease-in-out 300ms;
+  transition:
+    color ease-in-out 300ms,
+    background-color ease-in-out 300ms;
   color: ${({ theme }) => theme.colors.interactive};
   text-decoration: underline;
   position: relative;
@@ -38,7 +40,9 @@ export const SAnchor = styled.a<{
     background-color: ${({ theme }) => theme.colors.dark};
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform ease-in-out 300ms, background-color ease-in-out 300ms;
+    transition:
+      transform ease-in-out 300ms,
+      background-color ease-in-out 300ms;
   }
 
   ${({ makeBackgroundPaddingBleed = true }) =>
@@ -74,19 +78,22 @@ export const SAnchor = styled.a<{
   }
 `;
 
+export const SAnchor = styled.a<LinkCssPropsType>`
+  ${linkCss}
+`;
+
 type TProps = {
   to: string;
   children: ReactNode;
   showActive?: boolean;
   enableBackgroundEffect?: boolean;
   makeBackgroundPaddingBleed?: boolean;
-} & Pick<HTMLProps<typeof SAnchor>, "target"> &
-  Pick<ComponentProps<typeof NextLink>, "passHref">;
+} & Pick<ComponentProps<typeof NextLink>, "passHref"> &
+  Pick<HTMLProps<HTMLAnchorElement>, "target">;
 
 export function Link({
   to,
   children,
-  passHref = true,
   target,
   showActive = false,
   enableBackgroundEffect = true,
@@ -101,9 +108,9 @@ export function Link({
         href={to}
         target="_blank"
         rel="noopener"
-        showActive={showActive || isHovered}
-        enableBackgroundEffect={enableBackgroundEffect}
-        makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
+        $showActive={showActive || isHovered}
+        $enableBackgroundEffect={enableBackgroundEffect}
+        $makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
         {...hoverProps}
         {...otherProps}
       >
@@ -113,17 +120,20 @@ export function Link({
   }
 
   return (
-    <NextLink href={to} passHref={passHref}>
-      <SAnchor
-        target={target}
-        showActive={showActive || isHovered}
-        enableBackgroundEffect={enableBackgroundEffect}
-        makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
-        {...hoverProps}
-        {...otherProps}
-      >
-        {children}
-      </SAnchor>
-    </NextLink>
+    <SNextLink
+      href={to}
+      target={target}
+      $showActive={showActive || isHovered}
+      $enableBackgroundEffect={enableBackgroundEffect}
+      $makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
+      {...hoverProps}
+      {...otherProps}
+    >
+      {children}
+    </SNextLink>
   );
 }
+
+const SNextLink = styled(NextLink)<LinkCssPropsType>`
+  ${linkCss}
+`;

@@ -44,11 +44,8 @@ export const SKILL_KINDS = [
   "methodology",
 ] as const;
 
-type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<
-  infer ElementType
->
-  ? ElementType
-  : never;
+type ElementType<T extends ReadonlyArray<unknown>> =
+  T extends ReadonlyArray<infer ElementType> ? ElementType : never;
 
 export type TPageData$Skill$Kind = ElementType<typeof SKILL_KINDS>;
 
@@ -75,9 +72,9 @@ export const skillsByKinds = skillsData.skills.reduce(
         ...kindResult,
         [kind]: [...(kindResult[kind] ?? []), skill],
       }),
-      allResult
+      allResult,
     ),
-  {} as TSkillsByKind
+  {} as TSkillsByKind,
 );
 
 // Meta data

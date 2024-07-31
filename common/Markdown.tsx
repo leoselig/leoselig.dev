@@ -19,7 +19,7 @@ export function Markdown({
 }: TProps) {
   const finalComponents = useMemo(
     () => ({ ...defaultCmponents, ...customComponents }),
-    [customComponents]
+    [customComponents],
   );
   return (
     <SRoot {...otherProps}>
@@ -44,13 +44,13 @@ const defaultCmponents: Components = {
   em: function MarkdownEM({ children, ...otherProps }) {
     return <SMeta {...otherProps}>{children}</SMeta>;
   },
-  h1: function MarkdownH1({ children, ...otherProps }) {
+  h1: function MarkdownH1({ children, ref, ...otherProps }) {
     return <SMDHeadline1 {...otherProps}>{children}</SMDHeadline1>;
   },
-  h2: function MarkdownH2({ children, ...otherProps }) {
+  h2: function MarkdownH2({ children, ref, ...otherProps }) {
     return <SMDHeadline2 {...otherProps}>{children}</SMDHeadline2>;
   },
-  h3: function MarkdownH3({ children, ...otherProps }) {
+  h3: function MarkdownH3({ children, ref, ...otherProps }) {
     return <SMDHeadline3 {...otherProps}>{children}</SMDHeadline3>;
   },
   p: function MarkdownP({ children, ...otherProps }) {

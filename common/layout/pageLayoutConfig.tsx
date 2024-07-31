@@ -1,7 +1,7 @@
 import { maxWidthLeftPadding, ResponsiveMap } from "../responsive";
 import { SPACE_M, SPACE_XL } from "../theme";
 
-export const pageXPadding: ResponsiveMap<string> = {
+export const pageXPadding: ResponsiveMap<string, string, string, string> = {
   phone: maxWidthLeftPadding(SPACE_M),
   portrait: maxWidthLeftPadding(SPACE_XL),
   landscape: maxWidthLeftPadding(SPACE_XL),

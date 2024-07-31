@@ -91,7 +91,7 @@ export default function CVPrintPage() {
                 startDate={startDate}
                 endDate={endDate}
               />
-            )
+            ),
           )}
         </SSection>
         <SSection>
@@ -114,7 +114,7 @@ export default function CVPrintPage() {
                 startDate={startDate}
                 endDate={endDate}
               />
-            )
+            ),
           )}
         </SSection>
         <SSection>
@@ -130,7 +130,7 @@ export default function CVPrintPage() {
                 startDate={startDate}
                 endDate={endDate}
               />
-            )
+            ),
           )}
         </SSection>
       </SRoot>
@@ -259,7 +259,7 @@ function CVTimelineItem({
         year: "numeric",
         month: "2-digit",
       }),
-    [startDate]
+    [startDate],
   );
   const formattedEndDate = useMemo(
     () =>
@@ -269,7 +269,7 @@ function CVTimelineItem({
             month: "2-digit",
           })
         : null,
-    [endDate]
+    [endDate],
   );
 
   return (
@@ -317,6 +317,7 @@ CVPrintPage.pageStructure = {
     return (
       <>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
           rel="stylesheet"

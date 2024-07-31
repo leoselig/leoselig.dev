@@ -9,7 +9,7 @@ const CLASSNAME_BACKGROUND_STROKE = "svg-c-bg-stroke";
 
 export function createSVGStyles(
   foregroundColor: string,
-  backgroundColor: string
+  backgroundColor: string,
 ) {
   return css`
     .${CLASSNAME_FOREGROUND_FILL} {
@@ -67,7 +67,9 @@ export function LinkedInIcon({ ...otherProps }) {
 
 export const SIconSVG = styled.svg`
   * {
-    transition: stroke ease-in-out 200ms, fill ease-in-out 200ms;
+    transition:
+      stroke ease-in-out 200ms,
+      fill ease-in-out 200ms;
   }
 
   ${({ theme }) => createSVGStyles(theme.colors.dark, "transparent")}

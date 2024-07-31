@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import styled from "styled-components";
 
@@ -10,14 +10,16 @@ type TProps = {
 };
 
 export function OpacitySwitchTransition({ elementKey, children }: TProps) {
+  const nodeRef = useRef<HTMLDivElement | null>(null);
   return (
     <SwitchTransition>
       <CSSTransition
         key={elementKey}
         classNames={TRANSITION_CLASS_NAME}
         timeout={TRANSITION_DURATION_MS}
+        nodeRef={nodeRef}
       >
-        <SAnimatedWrapper>{children}</SAnimatedWrapper>
+        <SAnimatedWrapper ref={nodeRef}>{children}</SAnimatedWrapper>
       </CSSTransition>
     </SwitchTransition>
   );

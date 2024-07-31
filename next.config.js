@@ -3,6 +3,10 @@
 const withOptimizedImages = require("next-optimized-images");
 
 module.exports = withOptimizedImages({
+  output: "export",
+  compiler: {
+    styledComponents: true,
+  },
   responsive: {
     adapter: require("responsive-loader/sharp"),
   },

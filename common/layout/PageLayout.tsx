@@ -59,7 +59,8 @@ const SRoot = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   overflow: hidden;
 
-  transition: grid-template-rows ease-in-out 200ms,
+  transition:
+    grid-template-rows ease-in-out 200ms,
     grid-template-columns ease-in-out 200ms;
 
   padding-top: ${PAGE_TOP_PADDING};
@@ -90,7 +91,7 @@ const HeroImageContainer = styled.div`
       margin: 0 ${SPACE_L} 0 ${pageXPadding.portrait};
       align-self: flex-start;
       min-width: ${HERO_IMAGE_SIZE.portrait};
-      min-height: ${HERO_IMAGE_SIZE.portrait}; ;
+      min-height: ${HERO_IMAGE_SIZE.portrait};
     `,
     landscape: css`
       margin: 0 ${SPACE_L} 0 ${pageXPadding.landscape};

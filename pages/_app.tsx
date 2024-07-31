@@ -68,13 +68,8 @@ export default function App({ Component, pageProps }: TProps) {
           <title>{`${pageStructure.title} | Leo Selig (.dev)`}</title>
           <meta name="description" content={metaData.description} />
           {faviconsHTMLData.map(({ nodeName, attributes }, index) =>
-            createElement(nodeName, { ...attributes, key: index })
+            createElement(nodeName, { ...attributes, key: index }),
           )}
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap"
-            rel="stylesheet"
-          />
           {pageStructure.renderHeadComponents &&
             pageStructure.renderHeadComponents()}
         </Head>

@@ -55,21 +55,21 @@ export const NAVIGATION_ITEMS: {
 };
 
 export const NAVIGATION_ITEMS_LIST: TNavigationItem[] = Object.entries(
-  NAVIGATION_ITEMS
+  NAVIGATION_ITEMS,
 ).map(([id, value]) => ({
   id,
   ...value,
 }));
 
 export function useNavigationItems(
-  appearance: TNavigationItem$Appearance
+  appearance: TNavigationItem$Appearance,
 ): TNavigationItem[] {
   return useMemo(
     () =>
       NAVIGATION_ITEMS_LIST.filter(({ appearances }) =>
-        appearances.includes(appearance)
+        appearances.includes(appearance),
       ),
-    [appearance]
+    [appearance],
   );
 }
 
