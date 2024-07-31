@@ -10,6 +10,9 @@ import favicons from "favicons";
   const response = await favicons(
     "./public/profile-photo-black-white-contrast.svg",
     {
+      appName: "Leo Selig, Freelancing Software Engineer",
+      appShortName: "Leo Selig",
+      appDescription: "Leo Selig, Freelancing Software Engineer",
       path: "/favicons",
       icons: {
         android: true,

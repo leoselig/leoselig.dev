@@ -1,7 +1,6 @@
 labels:
   framework: "Frameworks"
-  platform: "Platforms"
-  tool: "Tooling"
+  tools: "Tools & Platforms"
   domain: "Domains"
   methodology: "Methodology"
 skills:
@@ -10,57 +9,41 @@ skills:
       - framework
   - name: Node.js
     kinds:
-      - platform
-      - tool
-  - name: Contentful
-    kinds:
-      - platform
-  - name: Prismic
-    kinds:
-      - platform
+      - tools
   - name: Gatsby
     kinds:
       - framework
   - name: Next.js
     kinds:
       - framework
-  - name: Babel
-    kinds:
-      - tool
-  - name: Webpack
-    kinds:
-      - tool
-  - name: Flow
-    kinds:
-      - tool
   - name: TypeScript
     kinds:
-      - tool
-  - name: Jenkins
-    kinds:
-      - platform
+      - tools
   - name: GitHub Actions
     kinds:
-      - platform
+      - tools
   - name: GitLab CI
     kinds:
-      - platform
+      - tools
+  - name: serverless
+    kinds:
+      - framework
   - name: RabbitMQ
     kinds:
       - framework
-  - name: Express
+  - name: Material UI
     kinds:
       - framework
   - name: Styled Components
     kinds:
       - framework
-  - name: redux-saga
-    kinds:
-      - framework
-  - name: Redux
+  - name: Electron
     kinds:
       - framework
   - name: Scrum (PSPO I & PSM I certified)
+    kinds:
+      - methodology
+  - name: data-driven
     kinds:
       - methodology
   - name: Kanban
@@ -71,46 +54,46 @@ skills:
       - methodology
   - name: Jest
     kinds:
-      - tool
-  - name: Karma
-    kinds:
-      - tool
+      - tools
   - name: ESLint
     kinds:
-      - tool
-  - name: Lightroom
+      - tools
+  - name: Lighthouse
     kinds:
-      - tool
+      - tools
   - name: WebDriverIO
     kinds:
       - framework
   - name: Cucumber
     kinds:
       - framework
-  - name: Selenium
+  - name: AWS Lambda
     kinds:
-      - framework
-  - name: Amazon Web Services (AWS)
+      - tools
+  - name: AWS Amplify
     kinds:
-      - platform
+      - tools
+  - name: AWS DynamoDB
+    kinds:
+      - tools
+  - name: S3
+    kinds:
+      - tools
   - name: Netlify
     kinds:
-      - platform
-  - name: Web application development
-    kinds:
-      - domain
-  - name: Backend development (Node.js)
+      - tools
+  - name: Full stack web application development
     kinds:
       - domain
   - name: Cryptography (WebCrypto)
     kinds:
       - domain
-  - name: Authorization (OpenID & OAuth)
+  - name: Authorization (OpenID, OAuth, Auth0)
     kinds:
       - domain
   - name: Animations (Web Animation API, CSS animations, react-motion)
     kinds:
       - domain
-  - name: PostgreSQL
+  - name: Contentful
     kinds:
-      - platform
+      - tools

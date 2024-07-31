@@ -46,11 +46,6 @@ export default function CVPrintPage() {
                 </Link>
               </SContactData>
               <SContactMethod>{contactData.labels.website}:</SContactMethod>
-              <SContactData>
-                <Link to={contactData.websiteURL}>
-                  {contactData.websiteURL}
-                </Link>
-              </SContactData>
             </SContact>
           </SHeaderRight>
         </SHeader>

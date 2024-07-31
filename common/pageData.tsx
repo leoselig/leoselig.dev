@@ -18,10 +18,11 @@ export const aboutMeData: TPageData$AboutMe = yamlAboutMePage;
 // Contact page data
 
 export type TPageData$Contact = {
-  labels: { phone: string; email: string; website: string };
+  labels: { phone: string; email: string; website: string; signal: string };
   phoneNumber: string;
   emailAddress: string;
   websiteURL: string;
+  signalUsername: string;
 };
 
 export const contactData: TPageData$Contact = yamlContactPage;
@@ -39,8 +40,7 @@ export const imprintData: TPageData$Imprint = yamlImprintPage;
 export const SKILL_KINDS = [
   "domain",
   "framework",
-  "platform",
-  "tool",
+  "tools",
   "methodology",
 ] as const;
 

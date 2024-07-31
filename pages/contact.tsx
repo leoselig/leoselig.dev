@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 
 import { Link } from "../common/Link";
 import { contactData } from "../common/pageData";
@@ -19,6 +20,9 @@ export default function ContactPage() {
           {contactData.emailAddress}
         </Link>
       </SContactData>
+
+      <SContactMethod>{contactData.labels.signal}:</SContactMethod>
+      <SContactData $monospace>{contactData.signalUsername}</SContactData>
     </SRoot>
   );
 }
@@ -33,8 +37,13 @@ const SRoot = styled.div`
 
 const SContactMethod = styled.div``;
 
-const SContactData = styled.div`
+const SContactData = styled.div<{ $monospace?: boolean }>`
   font-weight: 600;
+  ${({ $monospace }) =>
+    $monospace &&
+    css`
+      font-family: "Courier New", Courier, monospace;
+    `}
 `;
 
 ContactPage.pageStructure = {

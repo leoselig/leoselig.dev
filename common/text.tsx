@@ -4,7 +4,12 @@ import { fontWeightMap } from "./fonts";
 import { pageXPadding } from "./layout/pageLayoutConfig";
 import { responsive } from "./responsive";
 
+const defaultTextStyles = css`
+  line-height: 1.8em;
+`;
+
 const defaultHeadlineStyles = css<{ enableBackgroundEffect?: boolean }>`
+  ${defaultTextStyles};
   margin: 0;
 
   ${({ enableBackgroundEffect = true }) =>
@@ -36,7 +41,7 @@ const defaultHeadlineStyles = css<{ enableBackgroundEffect?: boolean }>`
 `;
 
 export const Headline1 = styled.h1<{ enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles}
+  ${defaultHeadlineStyles};
   font-size: 2.5rem;
 
   ${responsive({
@@ -47,7 +52,7 @@ export const Headline1 = styled.h1<{ enableBackgroundEffect?: boolean }>`
 `;
 
 export const Headline3 = styled.h1<{ enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles}
+  ${defaultHeadlineStyles};
   font-size: 1.5rem;
 
   ${responsive({
@@ -58,7 +63,7 @@ export const Headline3 = styled.h1<{ enableBackgroundEffect?: boolean }>`
 `;
 
 export const Headline2 = styled.h1<{ enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles}
+  ${defaultHeadlineStyles};
   font-size: 2rem;
 
   ${responsive({
@@ -73,10 +78,12 @@ export const Headline2 = styled.h1<{ enableBackgroundEffect?: boolean }>`
 `;
 
 export const Paragraph = styled.p`
+  ${defaultTextStyles};
   font-size: 1rem;
   font-weight: ${fontWeightMap.regular};
   margin: 0;
   white-space: pre-wrap;
+  max-width: 800px;
 
   &:not(:first-child) {
     margin-top: 1em;

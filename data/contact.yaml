@@ -2,6 +2,8 @@ labels:
   phone: Phone
   email: Email
   website: Website
+  signal: Signal
 phoneNumber: +49 331 23545897
 emailAddress: contact@leoselig.dev
 websiteURL: https://leoselig.dev
+signalUsername: leo.123
