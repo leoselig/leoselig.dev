@@ -16,12 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "15"
-
-      - run: npm install
+          node-version: 20
+      - run: npm ci
       - run: npm run eslint-check
       - run: npm run prettier-check
       - run: npm run typescript-ci
@@ -31,12 +30,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "14"
-
-      - run: npm install
+          node-version: 20
+      - run: npm ci
       - run: npm run next-build
       - run: npm run next-export
       - uses: actions/upload-artifact@v2
@@ -51,10 +49,11 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "14"
+          node-version: 20
+      - run: npm ci
       - name: "Download a single artifact"
         uses: actions/download-artifact@v2
         with:
