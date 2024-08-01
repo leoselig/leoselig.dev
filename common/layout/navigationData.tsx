@@ -23,7 +23,11 @@ export const NAVIGATION_ITEMS: {
     | Omit<TNavigationItem$External, "id">;
 } = {
   aboutMe: { route: "/", title: "About Me", appearances: ["header"] },
-  skills: { route: "/skills", title: "Skills", appearances: ["header"] },
+  experience: {
+    route: "/experience",
+    title: "Experience",
+    appearances: ["header"],
+  },
   linkedIn: {
     url: "https://www.linkedin.com/in/leo-selig-38b10582/",
     title: "LinkedIn",

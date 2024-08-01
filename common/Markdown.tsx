@@ -12,25 +12,17 @@ type TProps = {
   components?: ComponentProps<typeof ReactMarkdown>["components"];
 };
 
-export function Markdown({
-  data,
-  components: customComponents,
-  ...otherProps
-}: TProps) {
+export function Markdown({ data, components: customComponents }: TProps) {
   const finalComponents = useMemo(
     () => ({ ...defaultCmponents, ...customComponents }),
     [customComponents],
   );
   return (
-    <SRoot {...otherProps}>
-      <ReactMarkdown components={finalComponents} remarkPlugins={plugins}>
-        {data}
-      </ReactMarkdown>
-    </SRoot>
+    <ReactMarkdown components={finalComponents} remarkPlugins={plugins}>
+      {data}
+    </ReactMarkdown>
   );
 }
-
-const SRoot = styled.div``;
 
 const plugins = [remarkBreaksPlugin, remarkDirectivePlugin];
 const defaultCmponents: Components = {
@@ -45,16 +37,16 @@ const defaultCmponents: Components = {
     return <SMeta {...otherProps}>{children}</SMeta>;
   },
   h1: function MarkdownH1({ children, ref, node, ...otherProps }) {
-    return <SMDHeadline1 {...otherProps}>{children}</SMDHeadline1>;
+    return <SMdHeadline1 {...otherProps}>{children}</SMdHeadline1>;
   },
   h2: function MarkdownH2({ children, ref, node, ...otherProps }) {
-    return <SMDHeadline2 {...otherProps}>{children}</SMDHeadline2>;
+    return <SMdHeadline2 {...otherProps}>{children}</SMdHeadline2>;
   },
   h3: function MarkdownH3({ children, ref, node, ...otherProps }) {
-    return <SMDHeadline3 {...otherProps}>{children}</SMDHeadline3>;
+    return <SMdHeadline3 {...otherProps}>{children}</SMdHeadline3>;
   },
-  p: function MarkdownP({ children, node, ...otherProps }) {
-    return <Paragraph {...otherProps}>{children}</Paragraph>;
+  p: function MarkdownP({ children, ref, node, ...otherProps }) {
+    return <SMdParagraph {...otherProps}>{children}</SMdParagraph>;
   },
   li: function MarkdownLi({ children: rawChildren, node, ...otherProps }) {
     const { children, isListItemTypeNoneText } = useMemo(() => {
@@ -77,17 +69,19 @@ const defaultCmponents: Components = {
   },
 };
 
-const SMDHeadline1 = styled(Headline1)``;
+export const SMdHeadline1 = styled(Headline1)``;
 
-const SMDHeadline2 = styled(Headline2)``;
+export const SMdHeadline2 = styled(Headline2)``;
 
-const SMDHeadline3 = styled(Headline3)``;
+export const SMdHeadline3 = styled(Headline3)``;
 
 const SMeta = styled.em`
   font-style: normal;
-  color: ${({ theme }) => theme.colors.meta};
+  color: var(--color-meta);
 
   > ${SAnchor}:not(:hover) {
     color: inherit;
   }
 `;
+
+export const SMdParagraph = styled(Paragraph)``;

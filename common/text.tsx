@@ -8,17 +8,20 @@ const defaultTextStyles = css`
   line-height: 1.8em;
 `;
 
-const defaultHeadlineStyles = css<{ enableBackgroundEffect?: boolean }>`
+const defaultHeadlineStyles = css<{ $enableBackgroundEffect?: boolean }>`
   ${defaultTextStyles};
   margin: 0;
 
-  ${({ enableBackgroundEffect = true }) =>
-    enableBackgroundEffect &&
+  ${({ $enableBackgroundEffect = true }) =>
+    $enableBackgroundEffect &&
     css`
-      background-color: ${({ theme }) => theme.colors.dark};
-      color: ${({ theme }) => theme.colors.light};
+      background-color: var(--color-dark);
+      color: var(--color-light);
       width: fit-content;
       padding: 0.1em;
+      padding-right: 3em;
+      border-radius: 0 0.5rem 0.5rem 0;
+
       ${responsive({
         phone: css`
           margin-left: calc(-1 * ${pageXPadding.phone});
@@ -40,7 +43,7 @@ const defaultHeadlineStyles = css<{ enableBackgroundEffect?: boolean }>`
     `}
 `;
 
-export const Headline1 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+export const Headline1 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
   ${defaultHeadlineStyles};
   font-size: 2.5rem;
 
@@ -51,7 +54,7 @@ export const Headline1 = styled.h1<{ enableBackgroundEffect?: boolean }>`
   })}
 `;
 
-export const Headline3 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+export const Headline3 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
   ${defaultHeadlineStyles};
   font-size: 1.5rem;
 
@@ -62,7 +65,7 @@ export const Headline3 = styled.h1<{ enableBackgroundEffect?: boolean }>`
   })}
 `;
 
-export const Headline2 = styled.h1<{ enableBackgroundEffect?: boolean }>`
+export const Headline2 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
   ${defaultHeadlineStyles};
   font-size: 2rem;
 

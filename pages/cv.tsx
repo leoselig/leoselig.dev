@@ -13,7 +13,6 @@ import {
 } from "../common/pageData";
 import { Markdown } from "../common/Markdown";
 import { Headline1, Headline2 } from "../common/text";
-import { SPACE_L, SPACE_M, SPACE_S } from "../common/theme";
 import { Link, SAnchor } from "../common/Link";
 import { fontWeightMap } from "../common/fonts";
 
@@ -155,13 +154,13 @@ const SHeader = styled.header`
     "name contact"
     "title contact";
   grid-template-columns: 1fr auto;
-  margin-bottom: ${SPACE_L};
+  margin-bottom: var();
 `;
 
 const SName = styled.div`
   grid-area: name;
 
-  color: ${({ theme }) => theme.colors.interactive};
+  color: var(--color-interactive);
   font-size: 4rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -173,13 +172,13 @@ const STitle = styled.div`
   font-size: 1.6rem;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.interactive};
+  color: var(--color-interactive);
 `;
 
 const SHeaderRight = styled.div`
   grid-area: contact;
-  border-left: 0.125rem solid ${({ theme }) => theme.colors.interactive};
-  padding-left: ${SPACE_M};
+  border-left: 0.125rem solid var(--color-interactive);
+  padding-left: var(--space-m);
 
   display: flex;
   align-items: center;
@@ -190,7 +189,7 @@ const SContact = styled.div`
   grid-template-columns: min-content min-content;
   grid-template-rows: min-content min-content;
   grid-auto-flow: row;
-  grid-column-gap: ${SPACE_M};
+  grid-column-gap: var(--space-m);
   align-items: center;
 `;
 
@@ -202,18 +201,18 @@ const SContactData = styled.div`
 
 const SSection = styled.section`
   & + & {
-    margin-top: ${SPACE_L};
+    margin-top: var();
   }
 `;
 
 const SSectionTitle = styled(Headline1).attrs(() => ({
-  enableBackgroundEffect: false,
+  $enableBackgroundEffect: false,
 }))`
-  color: ${({ theme }) => theme.colors.interactive};
+  color: var(--color-interactive);
   background-color: transparent;
   text-transform: uppercase;
-  border-bottom: 0.125rem solid ${({ theme }) => theme.colors.interactive};
-  margin-bottom: ${SPACE_L};
+  border-bottom: 0.125rem solid var(--color-interactive);
+  margin-bottom: var();
   font-size: 1.8rem;
 `;
 
@@ -221,8 +220,8 @@ const SSkillsContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: auto 1fr;
-  grid-column-gap: ${SPACE_M};
-  grid-row-gap: ${SPACE_M};
+  grid-column-gap: var(--space-m);
+  grid-row-gap: var(--space-m);
 `;
 
 const SSkillKind = styled.div`
@@ -330,7 +329,7 @@ const printableMarkdownComponents: Components = {
 
 const STimelineItemActivities = styled.ul`
   grid-area: activities;
-  margin: ${SPACE_M} 0 ${SPACE_S};
+  margin: var(--space-m) 0 var(--space-s);
   list-style-type: circle;
 `;
 
@@ -344,7 +343,7 @@ const STimelineItemRoot = styled.section`
   grid-template-columns: 1fr auto;
 
   & + & {
-    margin-top: ${SPACE_L};
+    margin-top: var();
   }
 
   *:not(${STimelineItemActivities}) {
@@ -355,9 +354,9 @@ const STimelineItemRoot = styled.section`
 `;
 
 const STimelineItemTitle = styled(Headline2).attrs(() => ({
-  enableBackgroundEffect: false,
+  $enableBackgroundEffect: false,
 }))`
-  color: ${({ theme }) => theme.colors.dark};
+  color: var(--color-dark);
   background-color: transparent;
 
   grid-area: title;
@@ -370,7 +369,7 @@ const STimelineItemTime = styled.em`
 
 const STimelineItemSubline = styled.span`
   grid-area: subline;
-  margin-top: ${SPACE_S};
+  margin-top: var(--space-s);
 `;
 
 const STimelineItemActivity = styled.li``;

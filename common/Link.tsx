@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { ReactNode, ComponentProps, HTMLProps } from "react";
+import { ReactNode, HTMLProps } from "react";
 import styled, { css } from "styled-components";
 
 import { useHoverState } from "./useHoverState";
@@ -7,7 +7,7 @@ import { useHoverState } from "./useHoverState";
 export const BACKGROUND_BLEED_SIZE_EM = 0.2;
 
 const activeStyles = css`
-  color: ${({ theme }) => theme.colors.light};
+  color: var(--color-light);
   transition-duration: 300ms, 300ms;
 
   &:after {
@@ -27,7 +27,7 @@ export const linkCss = css<LinkCssPropsType>`
   transition:
     color ease-in-out 300ms,
     background-color ease-in-out 300ms;
-  color: ${({ theme }) => theme.colors.interactive};
+  color: var(--color-interactive);
   text-decoration: underline;
   position: relative;
   z-index: 0;
@@ -39,7 +39,8 @@ export const linkCss = css<LinkCssPropsType>`
 
     position: absolute;
     z-index: -1;
-    background-color: ${({ theme }) => theme.colors.dark};
+    background-color: var(--color-dark);
+    border-radius: 0.2rem;
     transform: scaleX(0);
     transform-origin: left;
     transition:
@@ -75,7 +76,7 @@ export const linkCss = css<LinkCssPropsType>`
 
   &:active {
     &:after {
-      background-color: ${({ theme }) => theme.colors.active};
+      background-color: var(--color-active);
     }
   }
 `;
@@ -90,8 +91,7 @@ type TProps = {
   showActive?: boolean;
   enableBackgroundEffect?: boolean;
   makeBackgroundPaddingBleed?: boolean;
-} & Pick<ComponentProps<typeof NextLink>, "passHref"> &
-  Pick<HTMLProps<HTMLAnchorElement>, "target">;
+} & Pick<HTMLProps<HTMLAnchorElement>, "target">;
 
 export function Link({
   to,

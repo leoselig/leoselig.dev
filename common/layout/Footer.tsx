@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { SIconSVG, createSVGStyles } from "../icons";
 import { Link } from "../Link";
 import { responsive } from "../responsive";
-import { SPACE_L, SPACE_XL } from "../theme";
 
 import {
   getLinkFromNavigationItem,
@@ -39,20 +38,20 @@ export function Footer({ ...otherProps }) {
 
 const SRoot = styled.div`
   display: flex;
-  border-top: 3px solid ${({ theme }) => theme.colors.dark};
+  border-top: 3px solid var(--color-dark);
 
   ${responsive({
     phone: css`
-      padding: ${SPACE_L} ${pageXPadding.phone};
+      padding: var(--space-m) ${pageXPadding.phone};
     `,
     portrait: css`
-      padding: ${SPACE_XL} ${pageXPadding.portrait};
+      padding: var(--space-l) ${pageXPadding.portrait};
     `,
     landscape: css`
-      padding: ${SPACE_XL} ${pageXPadding.landscape};
+      padding: var(--space-l) ${pageXPadding.landscape};
     `,
     large: css`
-      padding: ${SPACE_XL} ${pageXPadding.large};
+      padding: var(--space-l) ${pageXPadding.large};
     `,
   })}
 `;
@@ -64,7 +63,7 @@ const SCopyRightText = styled.span`
 const SLinks = styled.div`
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: ${SPACE_L};
+  grid-column-gap: var(--space-l);
   align-items: stretch;
 
   ${SIconSVG} {
@@ -73,14 +72,14 @@ const SLinks = styled.div`
     padding: 0.75rem;
     margin: -0.75rem;
 
-    ${({ theme }) => createSVGStyles(theme.colors.interactive, "transparent")};
+    ${createSVGStyles("var(--color-interactive)", "transparent")};
 
     &:hover {
       * {
         transition-duration: 123ms;
       }
 
-      ${({ theme }) => createSVGStyles(theme.colors.active, "transparent")};
+      ${createSVGStyles("var(--color-active)", "transparent")};
     }
   }
 `;

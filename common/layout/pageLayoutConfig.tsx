@@ -1,9 +1,8 @@
 import { maxWidthLeftPadding, ResponsiveMap } from "../responsive";
-import { SPACE_M, SPACE_XL } from "../theme";
 
 export const pageXPadding: ResponsiveMap<string, string, string, string> = {
-  phone: maxWidthLeftPadding(SPACE_M),
-  portrait: maxWidthLeftPadding(SPACE_XL),
-  landscape: maxWidthLeftPadding(SPACE_XL),
-  large: maxWidthLeftPadding(SPACE_XL),
+  phone: maxWidthLeftPadding("var(--space-m)"),
+  portrait: maxWidthLeftPadding("var(--space-xl"),
+  landscape: maxWidthLeftPadding("var(--space-xl"),
+  large: maxWidthLeftPadding("var(--space-xl"),
 };

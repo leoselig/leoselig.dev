@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
 
-import { defaultTheme } from "./theme";
-
 const CLASSNAME_FOREGROUND_FILL = "svg-c-fg-fill";
 const CLASSNAME_FOREGROUND_STROKE = "svg-c-fg-stroke";
 const CLASSNAME_BACKGROUND_FILL = "svg-c-bg-fill";
@@ -72,7 +70,7 @@ export const SIconSVG = styled.svg`
       fill ease-in-out 200ms;
   }
 
-  ${({ theme }) => createSVGStyles(theme.colors.dark, "transparent")}
+  ${createSVGStyles("var(--color-dark)", "transparent")}
 `;
 
 export function SiteIcon() {
@@ -85,11 +83,11 @@ export function SiteIcon() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill={defaultTheme.colors.active}
+        style={{ fill: "var(--color-active)" }}
         d="M 40 0 l 0 216 l 216 0 l -40 40 l -216 0 l 0 -216 Z"
       />
       <path
-        fill={defaultTheme.colors.active}
+        style={{ fill: "var(--color-active)" }}
         d="M 256 0 l 0 40 l -144 0 l 0 32 l 144 0 l 0 72 l -40 40 l -144 0 l 0 -40 l 144 0 l 0 -32 l -144 0 l 0 -72 l 40 -40 Z"
       />
     </svg>

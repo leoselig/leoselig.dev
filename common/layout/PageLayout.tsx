@@ -1,54 +1,17 @@
-import { ReactNode } from "react";
+import { Fragment, ReactNode, useMemo } from "react";
 import styled, { css } from "styled-components";
 
 import { responsive } from "../responsive";
-import { SPACE_L, SPACE_M, SPACE_XL } from "../theme";
 import { OpacitySwitchTransition } from "../OpacitySwitchTransition";
 import { fontWeightMap } from "../fonts";
 
 import { Footer } from "./Footer";
-import { Navigation } from "./Navigation";
 import { pageXPadding } from "./pageLayoutConfig";
 
 export type TLayout = {};
 
-const HERO_IMAGE_SIZE_REM = {
-  phone: 8,
-  portrait: 8,
-  landscape: 15,
-  large: 15,
-};
-const HERO_IMAGE_SIZE = {
-  phone: `${HERO_IMAGE_SIZE_REM.phone}rem`,
-  portrait: `${HERO_IMAGE_SIZE_REM.portrait}rem`,
-  landscape: `${HERO_IMAGE_SIZE_REM.landscape}rem`,
-  large: `${HERO_IMAGE_SIZE_REM.large}rem`,
-};
-
-const PAGE_TOP_PADDING = SPACE_XL;
+const PAGE_TOP_PADDING = "var(--space-xl)";
 const PAGE_TOP_PADDING_PHONE = pageXPadding.phone;
-
-const SNavigation = styled(Navigation)`
-  grid-area: navigation;
-  align-self: flex-end;
-
-  ${responsive({
-    phone: css`
-      align-self: flex-start;
-      padding: 0 calc(${pageXPadding.portrait}) ${SPACE_M} ${SPACE_M};
-    `,
-    portrait: css`
-      align-self: flex-start;
-      padding: 0 calc(${pageXPadding.portrait}) ${SPACE_M} ${SPACE_M};
-    `,
-    landscape: css`
-      padding: 0 ${pageXPadding.large} 0 0;
-    `,
-    large: css`
-      padding: 0 ${pageXPadding.large} 0 0;
-    `,
-  })}
-`;
 
 const SRoot = styled.div`
   width: 100%;
@@ -56,7 +19,7 @@ const SRoot = styled.div`
 
   display: grid;
   align-items: flex-end;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: var(--color-light);
   overflow: hidden;
 
   transition:
@@ -79,60 +42,31 @@ const SRoot = styled.div`
 
 const HeroImageContainer = styled.div`
   grid-area: hero-image;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
 
   ${responsive({
     phone: css`
-      margin: 0 0 0 ${pageXPadding.phone};
-      align-self: flex-start;
-      min-width: ${HERO_IMAGE_SIZE.phone};
-      min-height: ${HERO_IMAGE_SIZE.phone};
-    `,
-    portrait: css`
-      margin: 0 ${SPACE_L} 0 ${pageXPadding.portrait};
-      align-self: flex-start;
-      min-width: ${HERO_IMAGE_SIZE.portrait};
-      min-height: ${HERO_IMAGE_SIZE.portrait};
-    `,
-    landscape: css`
-      margin: 0 ${SPACE_L} 0 ${pageXPadding.landscape};
-      width: ${HERO_IMAGE_SIZE.landscape};
-      height: ${HERO_IMAGE_SIZE.landscape};
-    `,
-    large: css`
-      margin: 0 ${SPACE_L} 0 ${pageXPadding.large};
-      width: ${HERO_IMAGE_SIZE.large};
-      height: ${HERO_IMAGE_SIZE.large};
+      width: 50%;
+      margin: var(--space-l) 0;
     `,
   })}
 `;
 
-const TitleContainer = styled.div`
+const STitleContainer = styled.div`
   grid-area: title;
 
   align-self: stretch;
 
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: ${fontWeightMap.bold};
   text-transform: uppercase;
   line-height: 1em;
 
   display: flex;
   align-items: flex-end;
-
-  ${responsive({
-    phone: css`
-      display: none;
-    `,
-    portrait: css`
-      display: none;
-    `,
-    landscape: css`
-      transform: translateY(-0.13em);
-    `,
-    large: css`
-      transform: translateY(-0.13em);
-    `,
-  })}
+  text-indent: -0.05em;
 `;
 
 const ContentContainer = styled.main`
@@ -141,16 +75,16 @@ const ContentContainer = styled.main`
 
   ${responsive({
     phone: css`
-      padding: ${SPACE_L} ${pageXPadding.phone};
+      padding: var(--space-l) ${pageXPadding.phone};
     `,
     portrait: css`
-      padding: ${SPACE_XL} ${pageXPadding.portrait};
+      padding: var(--space-xl) ${pageXPadding.portrait};
     `,
     landscape: css`
-      padding: ${SPACE_XL} ${pageXPadding.landscape};
+      padding: var(--space-xl) ${pageXPadding.landscape};
     `,
     large: css`
-      padding: ${SPACE_XL} ${pageXPadding.large};
+      padding: var(--space-xl) ${pageXPadding.large};
     `,
   })}
 `;
@@ -174,12 +108,25 @@ export function PageLayout({
   heroImage,
   ...otherProps
 }: TProps) {
+  const yearsExperience = useMemo(() => new Date().getFullYear() - 2015, []);
   return (
     <SRoot {...otherProps}>
       <SHeader>
-        <TitleContainer>Leo Selig</TitleContainer>
-        <SNavigation />
+        <STitleContainer>Leo Selig</STitleContainer>
         <HeroImageContainer>{heroImage}</HeroImageContainer>
+        <SSubline>
+          {[
+            "Freelancer",
+            "Software Engineer",
+            `${yearsExperience} years experience`,
+            "Berlin area",
+          ].map((text, index) => (
+            <Fragment key={index}>
+              {index !== 0 && <SSublineItemSplit />}
+              <SSublineItem>{text}</SSublineItem>
+            </Fragment>
+          ))}
+        </SSubline>
       </SHeader>
 
       <ContentContainer>
@@ -197,33 +144,69 @@ const SFooter = styled(Footer)`
   grid-area: footer;
 `;
 
+const SSubline = styled.div`
+  grid-area: subline;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: var(--space-s);
+`;
+
+const SSublineItem = styled.div``;
+
+const SSublineItemSplit = styled.div`
+  width: 2px;
+  background-color: var(--color-dark);
+  align-self: stretch;
+`;
+
 const SHeader = styled.header`
   display: grid;
 
+  grid-template-areas:
+    "hero-image title"
+    "hero-image subline";
+  grid-template-columns: min-content 1fr;
+
+  margin-bottom: var(--space-l);
+
   ${responsive({
     phone: css`
-      grid-template-areas: "hero-image navigation";
-      grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+      padding: 0 ${pageXPadding.phone};
+      grid-template-areas: "hero-image" "title" "subline";
+      grid-template-columns: auto;
+      column-gap: var(--space-m);
+      justify-items: center;
+      --title-to-subline-gap: var(--space-s);
+      ${SSubline} {
+        justify-content: center;
+      }
     `,
     portrait: css`
-      grid-template-areas: "hero-image navigation";
-      grid-template-columns: minmax(auto, 2fr) minmax(auto, 3fr);
+      column-gap: var(--space-m);
+      padding: 0 ${pageXPadding.portrait};
+      --header-right-y-padding: var(--space-m);
+      --title-to-subline-gap: var(--space-s);
     `,
     landscape: css`
-      grid-template-areas:
-        "hero-image ."
-        "hero-image title"
-        "hero-image navigation";
-      grid-template-rows: 1fr auto 1fr;
-      grid-template-columns: min-content 1fr;
+      column-gap: var(--space-l);
+      padding: 0 ${pageXPadding.landscape};
+      --header-right-y-padding: var(--space-l);
+      --title-to-subline-gap: var(--space-m);
     `,
     large: css`
-      grid-template-areas:
-        "hero-image ."
-        "hero-image title"
-        "hero-image navigation";
-      grid-template-rows: 1fr auto 1fr;
-      grid-template-columns: min-content 1fr;
+      column-gap: var(--space-xl);
+      padding: 0 ${pageXPadding.large};
+      --header-right-y-padding: var(--space-xl);
+      --title-to-subline-gap: var(--space-m);
     `,
   })};
+
+  ${STitleContainer} {
+    margin-top: var(--header-right-y-padding);
+    margin-bottom: var(--title-to-subline-gap);
+  }
+  ${SSubline} {
+    margin-bottom: var(--header-right-y-padding);
+  }
 `;

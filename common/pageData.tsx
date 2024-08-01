@@ -1,5 +1,5 @@
 import yamlMeta from "../data/meta.yaml";
-import yamlSkillsPage from "../data/skills.yaml";
+import yamlSkills from "../data/skills.yaml";
 import yamlAboutMePage from "../data/aboutMe.yaml";
 import yamlContactPage from "../data/contact.yaml";
 import yamlImprintPage from "../data/imprint.yaml";
@@ -59,7 +59,7 @@ export type TPageData$Skills = {
   skills: TPageData$Skill[];
 };
 
-export const skillsData: TPageData$Skills = yamlSkillsPage;
+export const skillsData: TPageData$Skills = yamlSkills;
 
 type TSkillsByKind = {
   [skillKind in TPageData$Skill$Kind]: TPageData$Skill[];

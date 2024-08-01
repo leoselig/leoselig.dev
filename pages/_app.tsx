@@ -20,13 +20,24 @@ const GlobalStyles = createGlobalStyle`
     font-family: "Work Sans", 'Courier New', Courier, monospace;
     font-size: 1em;
     font-weight: ${fontWeightMap.regular};
-    color: ${({ theme }) => theme.colors.dark}
+    color: var(--color-dark);
   }
 
   html,
   body,
   #__next {
     height:100%;
+
+    --color-light: #fdfeff;
+    --color-dark: #002641;
+    --color-interactive: #005a96;
+    --color-active: #00c2e4;
+    --color-meta: #859eaf;
+
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
   }
 
   * {
