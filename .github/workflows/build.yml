@@ -36,7 +36,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run next-build
-      - run: npm run next-export
+      - run: npm run next-build
       - uses: actions/upload-artifact@v2
         with:
           name: static-site-export
