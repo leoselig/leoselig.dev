@@ -1,90 +1,44 @@
-import styled, { css } from "styled-components";
+import { HTMLProps } from "react";
+import classNames from "classnames";
 
-import { SIconSVG, createSVGStyles } from "../icons";
 import { Link } from "../Link";
-import { responsive } from "../responsive";
 
 import {
   getLinkFromNavigationItem,
   useNavigationItems,
 } from "./navigationData";
-import { pageXPadding } from "./pageLayoutConfig";
+import styles from "./Footer.module.css";
 
-export function Footer({ ...otherProps }) {
+type Props = HTMLProps<HTMLElement>;
+
+export function Footer({ className, ...otherProps }: Props) {
   const navigationItems = useNavigationItems("footer");
 
   return (
-    <SRoot {...otherProps}>
-      <SCopyRightText>© {new Date().getFullYear()}</SCopyRightText>
-      <SLinks>
+    <footer className={classNames(styles.root, className)} {...otherProps}>
+      <div className={styles["copy-right-text"]}>
+        © {new Date().getFullYear()}
+      </div>
+      <div className={styles["links-container"]}>
         {navigationItems.map((navigationItem) => (
-          <SLink
+          <Link
+            className={styles.link}
             key={navigationItem.id}
             to={getLinkFromNavigationItem(navigationItem)}
             target={navigationItem.shouldOpenInNewWindow ? "_blank" : ""}
             enableBackgroundEffect={!navigationItem.Icon}
           >
             {navigationItem.Icon ? (
-              <navigationItem.Icon title={navigationItem.title} />
+              <navigationItem.Icon
+                className={styles["link-icon"]}
+                title={navigationItem.title}
+              />
             ) : (
               navigationItem.title
             )}
-          </SLink>
+          </Link>
         ))}
-      </SLinks>
-    </SRoot>
+      </div>
+    </footer>
   );
 }
-
-const SRoot = styled.div`
-  display: flex;
-  border-top: 3px solid var(--color-dark);
-
-  ${responsive({
-    phone: css`
-      padding: var(--space-m) ${pageXPadding.phone};
-    `,
-    portrait: css`
-      padding: var(--space-l) ${pageXPadding.portrait};
-    `,
-    landscape: css`
-      padding: var(--space-l) ${pageXPadding.landscape};
-    `,
-    large: css`
-      padding: var(--space-l) ${pageXPadding.large};
-    `,
-  })}
-`;
-
-const SCopyRightText = styled.span`
-  margin-right: auto;
-`;
-
-const SLinks = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: var(--space-l);
-  align-items: stretch;
-
-  ${SIconSVG} {
-    width: 3rem;
-    height: 3rem;
-    padding: 0.75rem;
-    margin: -0.75rem;
-
-    ${createSVGStyles("var(--color-interactive)", "transparent")};
-
-    &:hover {
-      * {
-        transition-duration: 123ms;
-      }
-
-      ${createSVGStyles("var(--color-active)", "transparent")};
-    }
-  }
-`;
-
-const SLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;

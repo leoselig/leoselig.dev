@@ -1,6 +1,7 @@
 import { ReactNode, useRef } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import styled from "styled-components";
+
+import styles from "./OpacitySwitchTransition.module.css";
 
 const TRANSITION_DURATION_MS = 500;
 
@@ -15,31 +16,19 @@ export function OpacitySwitchTransition({ elementKey, children }: TProps) {
     <SwitchTransition>
       <CSSTransition
         key={elementKey}
-        classNames={TRANSITION_CLASS_NAME}
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles["enter-active"],
+          exit: styles.exit,
+          exitActive: styles["enter-active"],
+        }}
         timeout={TRANSITION_DURATION_MS}
         nodeRef={nodeRef}
       >
-        <SAnimatedWrapper ref={nodeRef}>{children}</SAnimatedWrapper>
+        <div ref={nodeRef} className={styles.root}>
+          {children}
+        </div>
       </CSSTransition>
     </SwitchTransition>
   );
 }
-
-const TRANSITION_CLASS_NAME = "opacity-switch-transition";
-
-const SAnimatedWrapper = styled.div`
-  transition: opacity ease-in-out ${TRANSITION_DURATION_MS}ms;
-  &.${TRANSITION_CLASS_NAME}-enter {
-    opacity: 0;
-  }
-  &.${TRANSITION_CLASS_NAME}-enter-active {
-    opacity: 1;
-  }
-
-  &.${TRANSITION_CLASS_NAME}-exit {
-    opacity: 1;
-  }
-  &.${TRANSITION_CLASS_NAME}-exit-active {
-    opacity: 0;
-  }
-`;

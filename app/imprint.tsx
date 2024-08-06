@@ -1,17 +1,13 @@
-import styled from "styled-components";
-
 import { imprintData } from "../common/pageData";
 import { Markdown } from "../common/Markdown";
 
 export default function ImprintPage() {
   return (
-    <SRoot>
+    <div>
       <Markdown data={imprintData.content} />
-    </SRoot>
+    </div>
   );
 }
-
-const SRoot = styled.div``;
 
 ImprintPage.pageStructure = {
   id: "imprint",

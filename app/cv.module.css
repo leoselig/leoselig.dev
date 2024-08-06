@@ -1,0 +1,142 @@
+.header {
+  display: grid;
+  grid-template-areas:
+    "name contact"
+    "title contact";
+  grid-template-columns: 1fr auto;
+}
+
+.name {
+  grid-area: name;
+
+  color: var(--color-interactive);
+  font-size: 4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  grid-area: title;
+
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-interactive);
+}
+
+.header-right {
+  grid-area: contact;
+  border-left: 0.125rem solid var(--color-interactive);
+  padding-left: var(--space-m);
+
+  display: flex;
+  align-items: center;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-template-rows: min-content min-content;
+  grid-auto-flow: row;
+  grid-column-gap: var(--space-m);
+  align-items: center;
+}
+
+.contact-data {
+  font-weight: var(--font-weight-bold);
+}
+
+.section-title {
+  color: var(--color-interactive);
+  background-color: transparent;
+  text-transform: uppercase;
+  border-bottom: 0.125rem solid var(--color-interactive);
+  margin-bottom: var();
+  font-size: 1.8rem;
+}
+
+.skills-container {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: var(--space-m);
+  grid-row-gap: var(--space-m);
+}
+
+.skill-kind {
+  font-weight: 600;
+}
+
+.timeline-item-activities {
+  grid-area: activities;
+  margin: var(--space-m) 0 var(--space-s);
+  list-style-type: circle;
+}
+
+.timeline-item-root {
+  display: grid;
+  grid-template-areas:
+    "title time"
+    "subline ."
+    "activities activities"
+    "skills skills";
+  grid-template-columns: 1fr auto;
+
+  & + & {
+    margin-top: var();
+  }
+
+  *:not(.timeline-item-activities) {
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+}
+
+.timeline-item-title {
+  color: var(--color-dark);
+  background-color: transparent;
+
+  grid-area: title;
+  font-size: 1.2rem;
+}
+
+.timeline-item-time {
+  grid-area: time;
+}
+
+.timeline-item-subline {
+  grid-area: subline;
+  margin-top: var(--space-s);
+}
+
+.timeline-item-skills {
+  grid-area: skills;
+}
+
+.root {
+  @media not print {
+    padding: 5mm;
+  }
+}
+
+.print-instruction-text {
+  display: none;
+
+  position: fixed;
+  top: 30mm;
+  right: 10mm;
+  width: fit-content;
+  text-transform: uppercase;
+  transform: rotate(10deg);
+  transform-origin: top left;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+@media not print {
+  .print-instruction-text {
+    display: block;
+  }
+}

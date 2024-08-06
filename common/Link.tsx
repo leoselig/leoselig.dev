@@ -1,20 +1,10 @@
 import NextLink from "next/link";
-import { ReactNode, HTMLProps } from "react";
-import styled, { css } from "styled-components";
+import { HTMLProps, ComponentProps } from "react";
+import classNames from "classnames";
 
-import { useHoverState } from "./useHoverState";
+import styles from "./Link.module.css";
 
 export const BACKGROUND_BLEED_SIZE_EM = 0.2;
-
-const activeStyles = css`
-  color: var(--color-light);
-  transition-duration: 300ms, 300ms;
-
-  &:after {
-    transform: scaleX(1);
-    transition-duration: 300ms, 300ms;
-  }
-`;
 
 export type LinkCssPropsType = {
   $showActive?: boolean;
@@ -22,76 +12,13 @@ export type LinkCssPropsType = {
   $makeBackgroundPaddingBleed?: boolean;
 };
 
-export const linkCss = css<LinkCssPropsType>`
-  cursor: pointer;
-  transition:
-    color ease-in-out 300ms,
-    background-color ease-in-out 300ms;
-  color: var(--color-interactive);
-  text-decoration: underline;
-  position: relative;
-  z-index: 0;
-
-  &:after {
-    content: " ";
-    display: ${({ $enableBackgroundEffect = true }) =>
-      $enableBackgroundEffect ? "block" : "none"};
-
-    position: absolute;
-    z-index: -1;
-    background-color: var(--color-dark);
-    border-radius: 0.2rem;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition:
-      transform ease-in-out 300ms,
-      background-color ease-in-out 300ms;
-  }
-
-  ${({ $makeBackgroundPaddingBleed = true }) =>
-    $makeBackgroundPaddingBleed
-      ? css`
-          &:after {
-            top: -${BACKGROUND_BLEED_SIZE_EM}em;
-            bottom: -${BACKGROUND_BLEED_SIZE_EM}em;
-            left: -${BACKGROUND_BLEED_SIZE_EM}em;
-            right: -${BACKGROUND_BLEED_SIZE_EM}em;
-          }
-        `
-      : css`
-          padding: ${BACKGROUND_BLEED_SIZE_EM}em;
-          &:after {
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-          }
-        `};
-
-  ${({ $showActive = false }) => $showActive && activeStyles}
-
-  &:hover {
-    ${activeStyles};
-  }
-
-  &:active {
-    &:after {
-      background-color: var(--color-active);
-    }
-  }
-`;
-
-export const SAnchor = styled.a<LinkCssPropsType>`
-  ${linkCss}
-`;
-
 type TProps = {
   to: string;
-  children: ReactNode;
   showActive?: boolean;
   enableBackgroundEffect?: boolean;
   makeBackgroundPaddingBleed?: boolean;
-} & Pick<HTMLProps<HTMLAnchorElement>, "target">;
+} & Pick<HTMLProps<HTMLAnchorElement>, "target"> &
+  Omit<ComponentProps<typeof NextLink>, "to" | "href" | "as" | "ref">;
 
 export function Link({
   to,
@@ -100,42 +27,43 @@ export function Link({
   showActive = false,
   enableBackgroundEffect = true,
   makeBackgroundPaddingBleed = true,
+  className: customClassName,
   ...otherProps
 }: TProps) {
-  const { isHovered, ...hoverProps } = useHoverState();
-
+  const className = classNames(
+    customClassName,
+    styles.link,
+    enableBackgroundEffect && styles["enable-background-effect"],
+    makeBackgroundPaddingBleed && styles["bleed-background"],
+    showActive && styles.active,
+  );
   if (to.match(/^[a-zA-Z][a-zA-Z0-9\-\+\.]+:/)) {
     return (
-      <SAnchor
+      <a
         href={to}
         target="_blank"
-        rel="noopener"
-        $showActive={showActive || isHovered}
-        $enableBackgroundEffect={enableBackgroundEffect}
-        $makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
-        {...hoverProps}
+        rel="noreferrer"
+        className={className}
         {...otherProps}
       >
         {children}
-      </SAnchor>
+      </a>
     );
   }
 
   return (
-    <SNextLink
+    <NextLink
+      className={className}
       href={to}
       target={target}
-      $showActive={showActive || isHovered}
-      $enableBackgroundEffect={enableBackgroundEffect}
-      $makeBackgroundPaddingBleed={makeBackgroundPaddingBleed}
-      {...hoverProps}
+      data-show-active={showActive}
       {...otherProps}
     >
       {children}
-    </SNextLink>
+    </NextLink>
   );
 }
 
-const SNextLink = styled(NextLink)<LinkCssPropsType>`
-  ${linkCss}
-`;
+export const linkStyles = {
+  link: styles.link,
+};

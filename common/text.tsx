@@ -1,106 +1,49 @@
-import styled, { css } from "styled-components";
+import classNames from "classnames";
+import { createElement, HTMLProps } from "react";
 
-import { fontWeightMap } from "./fonts";
-import { pageXPadding } from "./layout/pageLayoutConfig";
-import { responsive } from "./responsive";
+import styles from "./text.module.css";
 
-const defaultTextStyles = css`
-  line-height: 1.8em;
-`;
+type HeadlineProps = { enableBackgroundEffect?: boolean };
 
-const defaultHeadlineStyles = css<{ $enableBackgroundEffect?: boolean }>`
-  ${defaultTextStyles};
-  margin: 0;
+const createHeadlineComponent =
+  (type: `h${1 | 2 | 3 | 4}`) =>
+  ({
+    className,
+    children,
+    enableBackgroundEffect = false,
+    ...otherProps
+  }: HTMLProps<HTMLHeadingElement> & HeadlineProps) =>
+    createElement(
+      type,
+      {
+        className: classNames(
+          styles["text-base"],
+          styles["headline-base"],
+          styles[type],
+          className,
+          enableBackgroundEffect && styles["background-effect"],
+        ),
+        ...otherProps,
+      },
+      children,
+    );
 
-  ${({ $enableBackgroundEffect = true }) =>
-    $enableBackgroundEffect &&
-    css`
-      background-color: var(--color-dark);
-      color: var(--color-light);
-      width: fit-content;
-      padding: 0.1em;
-      padding-right: 3em;
-      border-radius: 0 0.5rem 0.5rem 0;
+export const Headline1 = createHeadlineComponent("h1");
 
-      ${responsive({
-        phone: css`
-          margin-left: calc(-1 * ${pageXPadding.phone});
-          padding-left: ${pageXPadding.phone};
-        `,
-        portrait: css`
-          margin-left: calc(-1 * ${pageXPadding.portrait});
-          padding-left: ${pageXPadding.portrait};
-        `,
-        landscape: css`
-          margin-left: calc(-1 * ${pageXPadding.landscape});
-          padding-left: ${pageXPadding.landscape};
-        `,
-        large: css`
-          margin-left: calc(-1 * ${pageXPadding.large});
-          padding-left: ${pageXPadding.large};
-        `,
-      })}
-    `}
-`;
+export const Headline2 = createHeadlineComponent("h2");
 
-export const Headline1 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles};
-  font-size: 2.5rem;
+export const Headline3 = createHeadlineComponent("h3");
 
-  ${responsive({
-    phone: css`
-      font-size: 2rem;
-    `,
-  })}
-`;
+export const Headline4 = createHeadlineComponent("h4");
 
-export const Headline3 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles};
-  font-size: 1.5rem;
+export const Paragraph = ({
+  className,
+  ...otherProps
+}: HTMLProps<HTMLParagraphElement>) => (
+  <p
+    className={classNames(styles["text-base"], styles.paragraph, className)}
+    {...otherProps}
+  />
+);
 
-  ${responsive({
-    phone: css`
-      font-size: 1.25rem;
-    `,
-  })}
-`;
-
-export const Headline2 = styled.h1<{ $enableBackgroundEffect?: boolean }>`
-  ${defaultHeadlineStyles};
-  font-size: 2rem;
-
-  ${responsive({
-    phone: css`
-      font-size: 1.5rem;
-    `,
-  })}
-
-  & + ${Headline3} {
-    margin-top: 1.5em;
-  }
-`;
-
-export const Paragraph = styled.p`
-  ${defaultTextStyles};
-  font-size: 1rem;
-  font-weight: ${fontWeightMap.regular};
-  margin: 0;
-  white-space: pre-wrap;
-  max-width: 800px;
-
-  &:not(:first-child) {
-    margin-top: 1em;
-  }
-
-  & + ${Headline1}, & + ${Headline2}, & + ${Headline3} {
-    margin-top: 1.5em;
-  }
-
-  & + & {
-    margin-top: 1em;
-  }
-
-  > br {
-    height: 2em;
-  }
-`;
+export const textStyles = { base: styles["text-base"] };

@@ -1,0 +1,68 @@
+:root {
+  --color-light: #fdfeff;
+  --color-dark: #000f1a;
+  --color-interactive: #005a96;
+  --color-active: #00c2e4;
+  --color-meta: #859eaf;
+
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+
+  --breakpoint-portrait: 768px;
+  --breakpoint-landscape: 1024px;
+  --breakpoint-large: 1280px;
+
+  --text-color-default: #2f5470;
+  --text-color-strong: #08131d;
+  --border-color: #a6b6c3;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family-default), "Courier New", Courier, monospace;
+  font-size: 1em;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-dark);
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-padding-x: max(calc((100vw - 1280px) / 2), var(--space-m));
+    --page-padding-y: var(--space-xl);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --page-padding-x: max(calc((100vw - 1280px) / 2), var(--space-xl));
+    --page-padding-y: var(--space-xl);
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --page-padding-x: max(calc((100vw - 1280px) / 2), var(--space-xl));
+    --page-padding-y: var(--space-xl);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --page-padding-x: max(calc((100vw - 1280px) / 2), var(--space-xl));
+    --page-padding-y: var(--space-xl);
+  }
+}

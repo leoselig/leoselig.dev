@@ -1,0 +1,23 @@
+.svg .svg-c-fg-fill {
+  fill: var(--icon-foreground-color);
+}
+.svg .svg-c-fg-stroke {
+  stroke: var(--icon-foreground-color);
+}
+.svg .svg-c-bg-fill {
+  stroke: var(--icon-background-color);
+}
+.svg .svg-c-bg-stroke {
+  fill: var(--icon-background-color);
+}
+
+.svg * {
+  transition:
+    stroke ease-in-out 200ms,
+    fill ease-in-out 200ms;
+}
+
+.default {
+  --icon-foreground-color: var(--color-dark);
+  --icon-background-color: transparent;
+}

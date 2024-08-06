@@ -15,8 +15,20 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitAny": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+      // { "name": "typescript-plugin-css-modules" }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "typings/**/*.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "typings/**/*.d.ts",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules", "out"]
 }

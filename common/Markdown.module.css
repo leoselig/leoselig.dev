@@ -1,0 +1,15 @@
+.meta {
+  font-style: normal;
+  color: var(--color-meta);
+
+  > .link:not(:hover) {
+    color: inherit;
+  }
+}
+
+.link {
+}
+
+.ul {
+  margin: var(--space-s) 0;
+}

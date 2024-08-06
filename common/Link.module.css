@@ -1,0 +1,71 @@
+.link.active,
+.link:active,
+.link:hover {
+  color: var(--color-light);
+  transition-duration: 300ms, 300ms;
+
+  &:after {
+    transform: scaleX(1);
+    transition-duration: 300ms, 300ms;
+  }
+}
+
+.link {
+  --background-bleed-size: 0.2em;
+
+  cursor: pointer;
+  transition:
+    color ease-in-out 300ms,
+    background-color ease-in-out 300ms;
+  color: var(--color-interactive);
+  text-decoration: underline;
+  position: relative;
+  z-index: 0;
+
+  &:after {
+    content: " ";
+    display: none;
+
+    position: absolute;
+    z-index: -1;
+    background-color: var(--color-dark);
+    border-radius: 0.2rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:
+      transform ease-in-out 300ms,
+      background-color ease-in-out 300ms;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  padding: var(--background-bleed-size);
+
+  &:active {
+    &:after {
+      background-color: var(--color-active);
+    }
+  }
+}
+
+.link.enable-background-effect {
+  &:after {
+    content: " ";
+    display: block;
+    top: calc(-1 * var(--background-bleed-size));
+    bottom: calc(-1 * var(--background-bleed-size));
+    left: calc(-1 * var(--background-bleed-size));
+    right: calc(-1 * var(--background-bleed-size));
+  }
+}
+.link.bleed-background {
+  &:after {
+    top: calc(-1 * var(--background-bleed-size));
+    bottom: calc(-1 * var(--background-bleed-size));
+    left: calc(-1 * var(--background-bleed-size));
+    right: calc(-1 * var(--background-bleed-size));
+  }
+}

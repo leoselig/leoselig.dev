@@ -1,15 +1,15 @@
-import { ComponentProps, Fragment } from "react";
-import styled, { css } from "styled-components";
+import { Fragment, HTMLProps } from "react";
 
-import { Headline2, Headline3, Paragraph } from "../text";
+import { Headline2, Headline4, Paragraph } from "../text";
 import { skillsByKinds, skillsData, SKILL_KINDS } from "../pageData";
-import { responsive } from "../responsive";
 
-type Props = ComponentProps<typeof SRoot>;
+import styles from "./SkillsSection.module.css";
+
+type Props = HTMLProps<HTMLDivElement>;
 
 export const SkillsSection = ({ ...otherProps }: Props) => {
   return (
-    <SRoot {...otherProps}>
+    <div {...otherProps}>
       <Headline2>Skills</Headline2>
       <Paragraph>
         {
@@ -17,66 +17,23 @@ export const SkillsSection = ({ ...otherProps }: Props) => {
         }
       </Paragraph>
 
-      <SSkillGrid>
+      <div className={styles["skill-grid"]}>
         {SKILL_KINDS.map((kind) => (
-          <SSkillBox key={kind}>
-            <SSkillBoxHeadline $enableBackgroundEffect={false}>
-              {skillsData.labels[kind]}
-            </SSkillBoxHeadline>
-            <SSkillParagraph>
+          <div key={kind} className={styles["skill-box"]}>
+            <Headline4>{skillsData.labels[kind]}</Headline4>
+            <Paragraph className={styles["skill-paragraph"]}>
               {skillsByKinds[kind].map((skill, index) => (
                 <Fragment key={skill.name}>
-                  <SSkill>
+                  <span className={styles.skill}>
                     {skill.name}
                     {skillsByKinds[kind].length > index + 1 && ", "}
-                  </SSkill>
+                  </span>
                 </Fragment>
               ))}
-            </SSkillParagraph>
-          </SSkillBox>
+            </Paragraph>
+          </div>
         ))}
-      </SSkillGrid>
-    </SRoot>
+      </div>
+    </div>
   );
 };
-
-const SRoot = styled.div``;
-
-const SSkillParagraph = styled(Paragraph)`
-  line-height: 2em;
-`;
-
-const SSkill = styled.span`
-  padding-right: 0.2em;
-`;
-
-const SSkillBox = styled.div`
-  border: 4px solid var(--color-dark);
-  border-radius: 0.5rem;
-  padding: 1rem;
-`;
-
-const SSkillGrid = styled.div`
-  display: grid;
-  grid-auto-flow: row;
-  gap: 1rem;
-  margin-top: 1rem;
-
-  ${responsive({
-    phone: css``,
-    portrait: css`
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-m);
-    `,
-    landscape: css`
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-l);
-    `,
-    large: css`
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: var(--space-l);
-    `,
-  })}
-`;
-
-const SSkillBoxHeadline = styled(Headline3)``;

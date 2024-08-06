@@ -1,8 +1,11 @@
 import { join } from "path";
+import { spawn } from "child_process";
 
 import { remove, outputFileSync } from "fs-extra";
 import { Element, load } from "cheerio";
 import favicons from "favicons";
+
+const FAVICONS_HEAD_DATA_FILE_PATH = "./common/favicons-html-head-data.ts";
 
 (async () => {
   await remove("./public/favicons");
@@ -33,20 +36,39 @@ import favicons from "favicons";
   const html$ = load(html.join(""));
 
   outputFileSync(
-    "./public/favicons/html-head-data.json",
-    JSON.stringify(
+    FAVICONS_HEAD_DATA_FILE_PATH,
+    `export const faviconsHeadData = ${JSON.stringify(
       html$("head *")
         .toArray()
         .map((node) => {
           if (node.type === "tag") {
             return {
+              attributes: node.attributes.reduce(
+                (result, current) => ({
+                  ...result,
+                  [current.name]: current.value,
+                }),
+                {},
+              ),
               nodeName: (node as Element).name,
-              attributes: (node as Element).attribs,
             };
           }
           return null;
         })
         .filter(Boolean),
-    ),
+    )} as const`,
   );
+
+  const eslintExitCode = await new Promise<number | null>((resolve) => {
+    const eslintProcess = spawn(
+      "npm",
+      ["run", "eslint-base", "--", FAVICONS_HEAD_DATA_FILE_PATH, "--fix"],
+      { stdio: "inherit" },
+    );
+
+    eslintProcess.on("exit", (code) => {
+      resolve(code);
+    });
+  });
+  process.exit(eslintExitCode);
 })();

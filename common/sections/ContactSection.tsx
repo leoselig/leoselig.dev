@@ -1,56 +1,37 @@
-import styled from "styled-components";
-import { css } from "styled-components";
-import { ComponentProps } from "react";
+import { HTMLProps } from "react";
+import classNames from "classnames";
 
 import { Link } from "../Link";
 import { contactData } from "../pageData";
 import { Headline2 } from "../text";
 
-type Props = ComponentProps<typeof SRoot>;
+import styles from "./ContactSection.module.css";
+
+type Props = HTMLProps<HTMLDivElement>;
 
 export default function ContactSection({ ...otherProps }: Props) {
   return (
-    <SRoot {...otherProps}>
+    <div {...otherProps}>
       <Headline2>Reach out</Headline2>
-      <SContactMethodGrid>
-        <SContactMethod>{contactData.labels.phone}:</SContactMethod>
-        <SContactData>
+      <div className={styles["contact-method-grid"]}>
+        <div>{contactData.labels.phone}:</div>
+        <div className={styles["contact-data"]}>
           <Link to={`tel:${contactData.phoneNumber.replace(/[ ()\-]/g, "")}`}>
             {contactData.phoneNumber}
           </Link>
-        </SContactData>
-        <SContactMethod>{contactData.labels.email}:</SContactMethod>
-        <SContactData>
+        </div>
+        <div>{contactData.labels.email}:</div>
+        <div className={styles["contact-data"]}>
           <Link to={`mailto:${contactData.emailAddress}`}>
             {contactData.emailAddress}
           </Link>
-        </SContactData>
+        </div>
 
-        <SContactMethod>{contactData.labels.signal}:</SContactMethod>
-        <SContactData $monospace>{contactData.signalUsername}</SContactData>
-      </SContactMethodGrid>
-    </SRoot>
+        <div>{contactData.labels.signal}:</div>
+        <div className={classNames(styles["contact-data"], styles.monospace)}>
+          {contactData.signalUsername}
+        </div>
+      </div>
+    </div>
   );
 }
-
-const SRoot = styled.div``;
-
-const SContactMethodGrid = styled.div`
-  margin-top: var(--space-m);
-
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-auto-flow: row;
-  gap: var(--space-m);
-`;
-
-const SContactMethod = styled.div``;
-
-const SContactData = styled.div<{ $monospace?: boolean }>`
-  font-weight: 600;
-  ${({ $monospace }) =>
-    $monospace &&
-    css`
-      font-family: "Courier New", Courier, monospace;
-    `}
-`;

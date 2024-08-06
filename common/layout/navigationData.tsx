@@ -7,7 +7,7 @@ export type TNavigationItem$Base = {
   title: string;
   appearances: TNavigationItem$Appearance[];
   shouldOpenInNewWindow?: boolean;
-  Icon?: ComponentType<HTMLProps<"svg">>;
+  Icon?: ComponentType<HTMLProps<SVGSVGElement>>;
 };
 export type TNavigationItem$Internal = TNavigationItem$Base & { route: string };
 export type TNavigationItem$External = TNavigationItem$Base & { url: string };

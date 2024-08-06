@@ -1,0 +1,12 @@
+.root {
+  --section-gap: var(--space-l);
+  --markdown-section-gap: var(--section-gap);
+}
+
+.skills-section {
+  margin-top: var(--section-gap);
+}
+
+.contact-section {
+  margin-top: var(--section-gap);
+}

@@ -2,10 +2,11 @@ import { ComponentProps, useMemo } from "react";
 import ReactMarkdown, { Components } from "react-markdown";
 import remarkBreaksPlugin from "remark-breaks";
 import remarkDirectivePlugin from "remark-directive";
-import styled from "styled-components";
+import classNames from "classnames";
 
-import { Link, SAnchor } from "./Link";
-import { Headline1, Headline2, Headline3, Paragraph } from "./text";
+import { Link } from "./Link";
+import textStyles from "./text.module.css";
+import styles from "./Markdown.module.css";
 
 type TProps = {
   data: string;
@@ -28,25 +29,76 @@ const plugins = [remarkBreaksPlugin, remarkDirectivePlugin];
 const defaultCmponents: Components = {
   a: function MarkdownA({ children, href, node, ...otherProps }) {
     return (
-      <Link to={href ?? ""} {...otherProps}>
+      <Link to={href ?? ""} className={styles.link} {...otherProps}>
         {children}
       </Link>
     );
   },
   em: function MarkdownEM({ children, node, ...otherProps }) {
-    return <SMeta {...otherProps}>{children}</SMeta>;
+    return (
+      <em {...otherProps} className={styles.meta}>
+        {children}
+      </em>
+    );
   },
   h1: function MarkdownH1({ children, ref, node, ...otherProps }) {
-    return <SMdHeadline1 {...otherProps}>{children}</SMdHeadline1>;
+    return (
+      <h1
+        className={classNames(
+          textStyles["text-base"],
+          textStyles["headline-base"],
+          textStyles.h1,
+        )}
+        {...otherProps}
+      >
+        {children}
+      </h1>
+    );
   },
   h2: function MarkdownH2({ children, ref, node, ...otherProps }) {
-    return <SMdHeadline2 {...otherProps}>{children}</SMdHeadline2>;
+    return (
+      <h2
+        className={classNames(
+          textStyles["text-base"],
+          textStyles["headline-base"],
+          textStyles.h2,
+        )}
+        {...otherProps}
+      >
+        {children}
+      </h2>
+    );
   },
   h3: function MarkdownH3({ children, ref, node, ...otherProps }) {
-    return <SMdHeadline3 {...otherProps}>{children}</SMdHeadline3>;
+    return (
+      <h3
+        className={classNames(
+          textStyles["text-base"],
+          textStyles["headline-base"],
+          textStyles.h3,
+        )}
+        {...otherProps}
+      >
+        {children}
+      </h3>
+    );
   },
   p: function MarkdownP({ children, ref, node, ...otherProps }) {
-    return <SMdParagraph {...otherProps}>{children}</SMdParagraph>;
+    return (
+      <p
+        className={classNames(textStyles["text-base"], textStyles.paragraph)}
+        {...otherProps}
+      >
+        {children}
+      </p>
+    );
+  },
+  ul: function MarkdownUl({ children, ref, node, ...otherProps }) {
+    return (
+      <ul className={classNames(styles.ul)} {...otherProps}>
+        {children}
+      </ul>
+    );
   },
   li: function MarkdownLi({ children: rawChildren, node, ...otherProps }) {
     const { children, isListItemTypeNoneText } = useMemo(() => {
@@ -63,25 +115,12 @@ const defaultCmponents: Components = {
         {...otherProps}
         style={isListItemTypeNoneText ? { listStyleType: "none" } : {}}
       >
-        <Paragraph>{children}</Paragraph>
+        <p
+          className={classNames(textStyles["text-base"], textStyles.paragraph)}
+        >
+          {children}
+        </p>
       </li>
     );
   },
 };
-
-export const SMdHeadline1 = styled(Headline1)``;
-
-export const SMdHeadline2 = styled(Headline2)``;
-
-export const SMdHeadline3 = styled(Headline3)``;
-
-const SMeta = styled.em`
-  font-style: normal;
-  color: var(--color-meta);
-
-  > ${SAnchor}:not(:hover) {
-    color: inherit;
-  }
-`;
-
-export const SMdParagraph = styled(Paragraph)``;

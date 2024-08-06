@@ -1,0 +1,16 @@
+.contact-method-grid {
+  margin-top: var(--space-m);
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-auto-flow: row;
+  gap: var(--space-m);
+}
+
+.contact-data {
+  font-weight: 600;
+
+  &.monospace {
+    font-family: "Courier New", Courier, monospace;
+  }
+}
