@@ -1,12 +1,10 @@
 /* eslint-env node */
 
-const { getEnvironmentVariable } = require("./scripts/environmentVariables");
-
 module.exports = {
   ci: {
     collect: {
-      url: ["http://localhost:5000/"],
-      staticDistDir: getEnvironmentVariable("LIGHTHOUSE_STATIC_SITE_PATH"),
+      url: ["http://localhost:3000/"],
+      startServerCommand: "npm run start",
     },
     upload: {
       target: "filesystem",

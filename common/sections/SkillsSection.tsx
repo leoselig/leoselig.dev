@@ -1,6 +1,6 @@
 import { Fragment, HTMLProps } from "react";
 
-import { Headline2, Headline4, Paragraph } from "../text";
+import { Headline2, Headline3, Paragraph } from "../text";
 import { skillsByKinds, skillsData, SKILL_KINDS } from "../pageData";
 
 import styles from "./SkillsSection.module.css";
@@ -20,7 +20,7 @@ export const SkillsSection = ({ ...otherProps }: Props) => {
       <div className={styles["skill-grid"]}>
         {SKILL_KINDS.map((kind) => (
           <div key={kind} className={styles["skill-box"]}>
-            <Headline4>{skillsData.labels[kind]}</Headline4>
+            <Headline3>{skillsData.labels[kind]}</Headline3>
             <Paragraph className={styles["skill-paragraph"]}>
               {skillsByKinds[kind].map((skill, index) => (
                 <Fragment key={skill.name}>

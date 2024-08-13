@@ -25,7 +25,6 @@
     "dev": "next dev",
     "next-build": "next build && next-sitemap",
     "start": "next start",
-    "serve": "serve ./out",
     "lighthouse-ci": "npm run _ts-node -- ./node_modules/.bin/lhci autorun",
     "eslint-base": "eslint",
     "eslint-check": "npm run eslint-base -- ./ --ext=\".tsx,.ts,.js\"",
@@ -48,9 +47,7 @@
     "react-markdown": "^9.0.1",
     "react-transition-group": "^4.4.5",
     "remark-breaks": "^4.0.0",
-    "remark-directive": "^3.0.0",
-    "responsive-loader": "^3.1.2",
-    "sharp": "^0.33.4"
+    "remark-directive": "^3.0.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.5",
@@ -70,17 +67,13 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "favicons": "^7.2.0",
     "fs-extra": "^11.2.0",
-    "imagemin-mozjpeg": "^9.0.0",
     "lighthouse": "^12.1.0",
-    "next-compose-plugins": "^2.2.1",
-    "next-optimized-images": "^2.6.2",
     "next-sitemap": "^4.2.3",
     "postcss-nesting": "^13.0.0",
     "prettier": "^3.3.3",
     "shelljs": "^0.8.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "typescript-plugin-css-modules": "^5.1.0",
-    "webp-loader": "^0.6.0"
+    "typescript-plugin-css-modules": "^5.1.0"
   }
 }

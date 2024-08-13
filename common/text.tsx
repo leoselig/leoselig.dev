@@ -34,8 +34,6 @@ export const Headline2 = createHeadlineComponent("h2");
 
 export const Headline3 = createHeadlineComponent("h3");
 
-export const Headline4 = createHeadlineComponent("h4");
-
 export const Paragraph = ({
   className,
   ...otherProps

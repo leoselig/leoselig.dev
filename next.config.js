@@ -1,16 +1,7 @@
 /* eslint-env commonjs */
 
-const withOptimizedImages = require("next-optimized-images");
-
-module.exports = withOptimizedImages({
-  output: "export",
+module.exports = {
   compiler: {},
-  responsive: {
-    adapter: require("responsive-loader/sharp"),
-  },
-  images: {
-    disableStaticImages: true,
-  },
   productionBrowserSourceMaps: false,
   webpack: function (config) {
     config.module.rules.push({
@@ -19,4 +10,4 @@ module.exports = withOptimizedImages({
     });
     return config;
   },
-});
+};

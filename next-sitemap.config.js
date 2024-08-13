@@ -3,5 +3,5 @@
 module.exports = {
   siteUrl: "https://leoselig.dev",
   generateRobotsTxt: true,
-  outDir: "./out",
+  outDir: "./.next",
 };
