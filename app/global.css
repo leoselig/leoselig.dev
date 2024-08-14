@@ -13,10 +13,6 @@
   --font-weight-regular: 400;
   --font-weight-bold: 600;
 
-  --breakpoint-portrait: 768px;
-  --breakpoint-landscape: 1024px;
-  --breakpoint-large: 1280px;
-
   --text-color-default: #2f5470;
   --text-color-strong: #08131d;
   --border-color: #a6b6c3;

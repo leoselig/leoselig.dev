@@ -26,33 +26,35 @@ export function PageLayout({
         <div className={styles.title}>Leo Selig</div>
         <div className={styles["hero-image-container"]}>{heroImage}</div>
         <div className={classNames(textStyles.base, styles.subline)}>
-          {[
-            "Freelancer",
-            "Software Engineer",
-            `${yearsExperience} years experience`,
-            "Berlin area",
-          ].map((text, index) => (
-            <Fragment key={index}>
-              {index !== 0 && (
+          <div className={styles["subline-inner"]}>
+            {[
+              "Freelancer",
+              "Software Engineer",
+              `${yearsExperience} years experience`,
+              "Berlin area",
+            ].map((text, index) => (
+              <Fragment key={index}>
+                {index !== 0 && (
+                  <div
+                    className={classNames(
+                      styles["subline-item-split"],
+                      index % 2 === 0 && styles["even"],
+                      index % 2 === 1 && styles["odd"],
+                    )}
+                  />
+                )}
                 <div
                   className={classNames(
-                    styles["subline-item-split"],
+                    styles["subline-item-text"],
                     index % 2 === 0 && styles["even"],
                     index % 2 === 1 && styles["odd"],
                   )}
-                />
-              )}
-              <div
-                className={classNames(
-                  styles["subline-item-text"],
-                  index % 2 === 0 && styles["even"],
-                  index % 2 === 1 && styles["odd"],
-                )}
-              >
-                {text}
-              </div>
-            </Fragment>
-          ))}
+                >
+                  {text}
+                </div>
+              </Fragment>
+            ))}
+          </div>
         </div>
       </header>
 

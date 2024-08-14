@@ -26,21 +26,19 @@
   grid-template-areas:
     "hero-image title"
     "hero-image subline";
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: min(25vw, 300px) 1fr;
+  grid-template-rows: min-content min-content;
 
   margin-top: var(--page-padding-y);
   margin-bottom: var(--page-padding-y);
 }
 
 .hero-image-container {
+  align-self: stretch;
   grid-area: hero-image;
   border-radius: 0.5rem;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-
-  @media (max-width: var(--breakpoint-portrait)) {
-    width: 50%;
-  }
 }
 
 .title {
@@ -74,13 +72,16 @@
 
 .subline {
   grid-area: subline;
+  line-height: 1em;
+
+  margin-bottom: var(--header-main-y-padding);
+}
+
+.subline-inner {
   display: flex;
   flex-wrap: wrap;
   align-items: start;
   gap: var(--space-s);
-  line-height: 1em;
-
-  margin-bottom: var(--header-main-y-padding);
 }
 
 .subline-item-split {
@@ -100,12 +101,12 @@
   .header {
     padding: 0 var(--page-padding-x);
     grid-template-areas: "hero-image" "title" "subline";
+    grid-template-rows: auto auto auto;
     grid-template-columns: auto;
     justify-items: center;
     --title-to-subline-gap: var(--space-m);
-    .subline {
-      justify-content: center;
 
+    .subline-inner {
       justify-content: center;
       align-items: center;
       row-gap: 0;
@@ -140,29 +141,11 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .header {
-    column-gap: var(--space-m);
-    padding: 0 var(--page-padding-x);
-    --header-main-y-padding: var(--space-m);
-    --title-to-subline-gap: var(--space-s);
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 768px) {
   .header {
     column-gap: var(--space-l);
     padding: 0 var(--page-padding-x);
-    --header-main-y-padding: var(--space-l);
-    --title-to-subline-gap: var(--space-m);
-  }
-}
-
-@media (min-width: 1280px) {
-  .header {
-    column-gap: var(--space-xl);
-    padding: 0 var(--page-padding-x);
-    --header-main-y-padding: var(--space-xl);
+    --header-main-y-padding: var(--space-m);
     --title-to-subline-gap: var(--space-m);
   }
 }
