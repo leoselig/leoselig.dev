@@ -14,7 +14,7 @@ export function ProfilePhoto({
     <Image
       src={profileImageUrl}
       alt="Photo of Leo Selig"
-      sizes="(max-width: 768px) 50vw, (max-width: 1279px) 40vw, 30vw"
+      sizes="(min-width: 768px) 300px, 50vw"
       className={classNames(styles.image, className)}
       {...otherProps}
     />
