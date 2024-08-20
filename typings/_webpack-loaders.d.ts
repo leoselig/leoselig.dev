@@ -3,6 +3,11 @@ declare module "*.yaml" {
   export default data;
 }
 
+declare module "*.yml" {
+  const data: any;
+  export default data;
+}
+
 declare module "*.jpeg" {
   const uri: string;
   export default uri;

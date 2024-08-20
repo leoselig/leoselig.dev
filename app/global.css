@@ -16,6 +16,8 @@
   --text-color-default: #2f5470;
   --text-color-strong: #08131d;
   --border-color: #a6b6c3;
+
+  --line-height-default: 1.8em;
 }
 
 html,

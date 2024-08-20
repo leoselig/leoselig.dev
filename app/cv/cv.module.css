@@ -31,19 +31,26 @@
 
   display: flex;
   align-items: center;
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
 }
 
 .contact {
   display: grid;
   grid-template-columns: min-content min-content;
-  grid-template-rows: min-content min-content;
+  grid-auto-rows: 1fr;
   grid-auto-flow: row;
-  grid-column-gap: var(--space-m);
   align-items: center;
+  column-gap: var(--space-m);
+  align-self: stretch;
 }
 
 .contact-data {
   font-weight: var(--font-weight-bold);
+}
+
+.section {
+  margin-top: var(--space-l);
 }
 
 .section-title {
@@ -51,16 +58,10 @@
   background-color: transparent;
   text-transform: uppercase;
   border-bottom: 0.125rem solid var(--color-interactive);
-  margin-bottom: var();
+  margin-bottom: var(--space-m);
   font-size: 1.8rem;
-}
 
-.skills-container {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: var(--space-m);
-  grid-row-gap: var(--space-m);
+  break-after: avoid;
 }
 
 .skill-kind {
@@ -71,6 +72,8 @@
   grid-area: activities;
   margin: var(--space-m) 0 var(--space-s);
   list-style-type: circle;
+
+  break-before: avoid;
 }
 
 .timeline-item-root {
@@ -83,13 +86,7 @@
   grid-template-columns: 1fr auto;
 
   & + & {
-    margin-top: var();
-  }
-
-  *:not(.timeline-item-activities) {
-    page-break-before: avoid;
-    page-break-inside: avoid;
-    page-break-after: avoid;
+    margin-top: var(--space-l);
   }
 }
 
@@ -99,44 +96,36 @@
 
   grid-area: title;
   font-size: 1.2rem;
+
+  break-after: avoid;
 }
 
 .timeline-item-time {
   grid-area: time;
+  align-self: center;
+
+  break-after: avoid;
 }
 
 .timeline-item-subline {
   grid-area: subline;
   margin-top: var(--space-s);
+
+  break-after: avoid;
 }
 
 .timeline-item-skills {
   grid-area: skills;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: var(--space-m);
+  grid-row-gap: var(--space-m);
 }
 
 .root {
   @media not print {
     padding: 5mm;
-  }
-}
-
-.print-instruction-text {
-  display: none;
-
-  position: fixed;
-  top: 30mm;
-  right: 10mm;
-  width: fit-content;
-  text-transform: uppercase;
-  transform: rotate(10deg);
-  transform-origin: top left;
-  font-size: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  text-decoration: none;
-}
-
-@media not print {
-  .print-instruction-text {
-    display: block;
   }
 }

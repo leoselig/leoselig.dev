@@ -1,90 +1,97 @@
 projects:
+  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
+    periods:
+      - startDate: 2021-12-13
+        endDate: 2021-01-31
+        website: https://tiki-share.com
+        activities:
+          - ported existing shop widget from Flutter to React
+          - created foundation (repo setup, technology choice, initial structure, CI/CD)
+          - implemented some features & supported developer in gaining know-how of the stack
+        skills:
+          - React
+          - styled-components
+          - Netlify
+      - startDate: 2021-07-01
+        endDate: 2021-07-31
+        activities:
+          - built new administration app for TIKI SUP ([website](https://tiki-sup.com))
+          - created UI concept based on provided use cases
+          - implemented app against existing API
+        skills:
+          - React
+          - Material UI
+          - Netlify
+      - startDate: 2023-07-01
+        endDate: 2024-08-31
+        activities:
+          - planned and implemented Electron app for use as a new product on panel PCs at different customers
+          - integrated external hardware (i.e. USB-connected RFID scanner)
+          - worked on backend to incorporate necessary changes concerning authentication and business logic
+        skills:
+          - Serverless, AWS API Gateway/Lambda/DynamoDB
+          - Electron
+          - React
+          - Material UI
   - client: culture4life GmbH
-    startDate: 2022-02-16
-    endDate: 2022-06-30
-    activities:
-      - suporting existing [Luca](https://www.luca-app.de) Backend team for new payment feature
-      - feature development in existing Node.js backend
-      - technical coordination and backend-side implementation of device attestation (App Attest, SafetyNet & Android Key Attestation)
-      - writing and reviewing RFCs
-    skills:
-      - Node.js
-      - express
-      - App Attest
-      - SafetyNet Attestation API
-      - Android Key Attestation
-      - RabbitMQ
-      - PostgreSQL
-  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
-    startDate: 2021-12-13
-    endDate: 2021-01-31
-    activities:
-      - ported existing shop widget from Flutter to React
-      - created foundation (repo setup, technology choice, initial structure, CI/CD)
-      - implemented some features & supported developer in gaining know-how of the stack
-    skills:
-      - React
-      - styled-components
-      - Netlify
+    website: https://luca-app.de
+    periods:
+      - startDate: 2022-02-16
+        endDate: 2022-06-30
+        activities:
+          - suporting existing [Luca](https://www.luca-app.de) Backend team for new payment feature
+          - feature development in existing Node.js backend
+          - technical coordination and backend-side implementation of device attestation (App Attest, SafetyNet & Android Key Attestation)
+          - writing and reviewing RFCs
+        skills:
+          - Node.js
+          - express
+          - App Attest
+          - SafetyNet Attestation API
+          - Android Key Attestation
+          - RabbitMQ
+          - PostgreSQL
   - client: Fahrschul- und Transport GmbH Havelland
-    startDate: 2021-10-24
-    endDate: 2021-11-30
-    activities:
-      - created UI/UX concept for an upload portal for driving documents (web app)
-      - implemented the web app (incl. CI/CD)
-    skills:
-      - React
-      - JWT
-      - styled-components
-      - GitHub Actions, Netlify
-  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
-    startDate: 2021-12-13
-    endDate: 2021-01-31
-    activities:
-      - ported existing shop widget from Flutter to React
-      - created foundation (repo setup, technology choice, initial structure, CI/CD)
-      - implemented some features & supported developer in gaining know-how of the stack
-    skills:
-      - React
-      - styled-components
-      - Netlify
+    periods:
+      - startDate: 2021-10-24
+        endDate: 2021-11-30
+        activities:
+          - created UI/UX concept for an upload portal for driving documents (web app)
+          - implemented the web app (incl. CI/CD)
+        skills:
+          - React
+          - JWT
+          - styled-components
+          - GitHub Actions, Netlify
   - client: Wonder Technologies GmbH
-    startDate: 2021-08-16
-    endDate: 2021-11-11
-    activities:
-      - supported existing team in developing [wonder.me](https://www.wonder.me), an online meeting platform
-      - developed new features in the existing React/Canvas-based app either independently or in pair programming
-      - conducted performance analysis and implemented according improvements
-    skills:
-      - React
-      - SASS
-      - Canvas
-  - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
-    startDate: 2021-07-01
-    endDate: 2021-07-31
-    activities:
-      - built new administration app for TIKI SUP ([website](https://tiki-sup.com))
-      - created UI concept based on provided use cases
-      - implemented app against existing API
-    skills:
-      - React
-      - Material UI
-      - Netlify
+    periods:
+      - startDate: 2021-08-16
+        endDate: 2021-11-11
+        activities:
+          - supported existing team in developing [wonder.me](https://www.wonder.me), an online meeting platform
+          - developed new features in the existing React/Canvas-based app either independently or in pair programming
+          - conducted performance analysis and implemented according improvements
+        skills:
+          - React
+          - SASS
+          - Canvas
   - client: advalyze, Berlin
-    startDate: 2021-03-08
-    endDate: 2021-05-31
-    activities:
-      - built new website & online shop for unu ([website](https://unumotors.com)) together with advalyze (including another freelancer)
-      - created concept for and implemented modular design system based on Contentful (headless CMS) and Gatsby
-      - implemented animation-heavy responsive design
-      - connected CRM backend via Netlify functions
-    skills:
-      - Gatsby
-      - React
-      - Contentful
-      - Web Animation API
-      - Netlify
-      - Serverless functions
+    periods:
+      - startDate: 2021-03-08
+        endDate: 2021-05-31
+        website: https://www.advalyze.com
+        activities:
+          - built new website & online shop for unu ([website](https://unumotors.com)) together with advalyze (including another freelancer)
+          - created concept for and implemented modular design system based on Contentful (headless CMS) and Gatsby
+          - implemented animation-heavy responsive design
+          - connected CRM backend via Netlify functions
+        skills:
+          - Gatsby
+          - React
+          - Contentful
+          - Web Animation API
+          - Netlify
+          - Serverless functions
 employments:
   - position: Lead Software Engineer
     employee: neXenio GmbH, Berlin

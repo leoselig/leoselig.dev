@@ -20,7 +20,7 @@ export default function ContactSection({ ...otherProps }: Props) {
             {contactData.phoneNumber}
           </Link>
         </div>
-        <div>{contactData.labels.email}:</div>
+        <div>{`${contactData.labels.email}:`}</div>
         <div className={styles["contact-data"]}>
           <Link to={`mailto:${contactData.emailAddress}`}>
             {contactData.emailAddress}

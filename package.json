@@ -33,21 +33,22 @@
     "typescript-dev": "tsc --watch",
     "typescript-ci": "tsc",
     "deploy": "npm run _ts-node -- ./scripts/deploy.ts ",
-    "generate-favicons": "npm run _ts-node -- ./scripts/generateFavicons.ts"
+    "generate-favicons": "npm run _ts-node -- ./scripts/generateFavicons.ts",
+    "validate-page-data": "npm run _ts-node -- ./scripts/validatePageData.ts"
   },
   "dependencies": {
     "@lhci/cli": "^0.14.0",
     "@types/favicons": "^6.2.2",
     "@types/react-transition-group": "^4.4.10",
     "classnames": "^2.5.1",
-    "js-yaml-loader": "^1.2.2",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-transition-group": "^4.4.5",
     "remark-breaks": "^4.0.0",
-    "remark-directive": "^3.0.0"
+    "remark-directive": "^3.0.0",
+    "yaml-loader": "^0.8.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.5",
@@ -74,6 +75,8 @@
     "shelljs": "^0.8.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "typescript-plugin-css-modules": "^5.1.0"
+    "typescript-plugin-css-modules": "^5.1.0",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
   }
 }

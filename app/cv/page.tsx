@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import { Components } from "react-markdown";
 
 import {
@@ -6,25 +6,35 @@ import {
   contactData,
   cvData,
   experienceData,
+  SKILL_KINDS,
   skillsByKinds,
   skillsData,
-  SKILL_KINDS,
-} from "../common/pageData";
-import { Markdown } from "../common/Markdown";
-import { Link, linkStyles } from "../common/Link";
-import { Headline1, Headline2 } from "../common/text";
+} from "../../common/pageData";
+import { Markdown } from "../../common/Markdown";
+import { Link, linkStyles } from "../../common/Link";
+import { Headline1, Headline3 } from "../../common/text";
+import { PrintButton } from "../common/PrintButton";
 
 import styles from "./cv.module.css";
 
 import "./cv.css";
 
 export default function CVPrintPage() {
-  const handleClickPrint = useCallback(() => window.print(), []);
+  const sortedProjectPeriods = useMemo(
+    () =>
+      experienceData.projects
+        .map(({ client, periods }) =>
+          periods.map((period) => ({ client, period })),
+        )
+        .flat()
+        .sort((period1, period2) =>
+          period1.period.startDate.localeCompare(period2.period.startDate),
+        ),
+    [],
+  );
   return (
     <div className={styles.root}>
-      <a onClick={handleClickPrint} className={linkStyles.link}>
-        Print me!
-      </a>
+      <PrintButton />
       <header className={styles.header}>
         <div className={styles.name}>{cvData.header.name}</div>
         <div className={styles.title}>{cvData.header.title}</div>
@@ -45,14 +55,17 @@ export default function CVPrintPage() {
               </Link>
             </div>
             <div>{contactData.labels.website}:</div>
+            <div className={styles["contact-data"]}>
+              <Link to={contactData.websiteURL}>{contactData.websiteURL}</Link>
+            </div>
           </div>
         </div>
       </header>
-      <section>
+      <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
           {cvData.labels.skills}
         </Headline1>
-        <div className={styles["skills-container"]}>
+        <div className={styles["timeline-item-skills"]}>
           {SKILL_KINDS.map((kind) => (
             <Fragment key={kind}>
               <div className={styles["skill-kind"]}>
@@ -72,18 +85,18 @@ export default function CVPrintPage() {
             {cvData.labels.certifications}
           </div>
           <div>
-            {certificationsData.certifications
+            {certificationsData.entries
               .map(({ name, authority }) => `${name} (by ${authority})`)
               .join(", ")}
           </div>
         </div>
       </section>
-      <section>
+      <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
           {cvData.labels.projects}
         </Headline1>
-        {experienceData.projects.map(
-          ({ client, startDate, endDate, activities, skills }) => (
+        {sortedProjectPeriods.map(
+          ({ client, period: { startDate, endDate, activities, skills } }) => (
             <CVTimelineItem
               key={`${client}-${startDate}`}
               headline={client}
@@ -96,7 +109,7 @@ export default function CVPrintPage() {
           ),
         )}
       </section>
-      <section>
+      <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
           {cvData.labels.employments}
         </Headline1>
@@ -114,7 +127,7 @@ export default function CVPrintPage() {
           ),
         )}
       </section>
-      <section>
+      <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
           {cvData.labels.education}
         </Headline1>
@@ -174,7 +187,9 @@ function CVTimelineItem({
 
   return (
     <section className={styles["timeline-item-root"]}>
-      <Headline2 enableBackgroundEffect>{headline}</Headline2>
+      <Headline3 className={styles["timeline-item-title"]}>
+        {headline}
+      </Headline3>
       <em className={styles["timeline-item-time"]}>
         {formattedEndDate
           ? `${formattedStartDate} to ${formattedEndDate}`
@@ -198,7 +213,7 @@ function CVTimelineItem({
         </ul>
       )}
       {skills && (
-        <div className={styles["skills-container"]}>
+        <div className={styles["timeline-item-skills"]}>
           <Markdown
             data={skills.join(", ")}
             components={printableMarkdownComponents}

@@ -65,5 +65,9 @@ export function Link({
 }
 
 export const linkStyles = {
+  backgroundEffectLink: classNames(
+    styles.link,
+    styles["enable-background-effect"],
+  ),
   link: styles.link,
 };

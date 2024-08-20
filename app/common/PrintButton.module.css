@@ -1,0 +1,20 @@
+.root {
+  display: none;
+
+  position: fixed;
+  top: 30mm;
+  right: 10mm;
+  width: fit-content;
+  text-transform: uppercase;
+  transform: rotate(10deg);
+  transform-origin: top left;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+@media not print {
+  .root {
+    display: block;
+  }
+}

@@ -7,59 +7,41 @@ import yamlExperience from "../data/experience.yaml";
 import yamlCV from "../data/cv.yaml";
 import yamlCertifications from "../data/certifications.yaml";
 
-// About me page data
+import {
+  TPageData$AboutMe,
+  TPageData$Certifications,
+  TPageData$Contact,
+  TPageData$CV,
+  TPageData$Experience,
+  TPageData$Imprint,
+  TPageData$Meta,
+  TPageData$Skill,
+  TPageData$Skill$Kind,
+  TPageData$Skills,
+} from "./dataSchemas";
 
-export type TPageData$AboutMe = {
-  content: string;
-};
+// About me page data
 
 export const aboutMeData: TPageData$AboutMe = yamlAboutMePage;
 
 // Contact page data
 
-export type TPageData$Contact = {
-  labels: { phone: string; email: string; website: string; signal: string };
-  phoneNumber: string;
-  emailAddress: string;
-  websiteURL: string;
-  signalUsername: string;
-};
-
 export const contactData: TPageData$Contact = yamlContactPage;
 
 // Imprint page data
-
-export type TPageData$Imprint = {
-  content: string;
-};
 
 export const imprintData: TPageData$Imprint = yamlImprintPage;
 
 // Sills page data
 
-export const SKILL_KINDS = [
+export const skillsData: TPageData$Skills = yamlSkills;
+
+export const SKILL_KINDS: TPageData$Skill$Kind[] = [
   "domain",
   "framework",
   "tools",
   "methodology",
-] as const;
-
-type ElementType<T extends ReadonlyArray<unknown>> =
-  T extends ReadonlyArray<infer ElementType> ? ElementType : never;
-
-export type TPageData$Skill$Kind = ElementType<typeof SKILL_KINDS>;
-
-export type TPageData$Skill = {
-  name: string;
-  kinds: TPageData$Skill$Kind[];
-};
-
-export type TPageData$Skills = {
-  labels: { [key in TPageData$Skill$Kind]: string };
-  skills: TPageData$Skill[];
-};
-
-export const skillsData: TPageData$Skills = yamlSkills;
+];
 
 type TSkillsByKind = {
   [skillKind in TPageData$Skill$Kind]: TPageData$Skill[];
@@ -79,9 +61,7 @@ export const skillsByKinds = skillsData.skills.reduce(
 
 // Meta data
 
-export type TPageData$Meta = {
-  description: string;
-};
+export type { TPageData$Meta };
 
 export const metaData: TPageData$Meta = yamlMeta;
 
@@ -89,66 +69,10 @@ export const metaData: TPageData$Meta = yamlMeta;
 
 export const experienceData: TPageData$Experience = yamlExperience;
 
-export type TPageData$Experience = {
-  projects: TPageData$Experience$Project[];
-  employments: TPageData$Experience$Employment[];
-  education: TPageData$Experience$Education[];
-  certifications: TPageData$Experience$Certification[];
-};
-
-export type TPageData$Experience$Project = {
-  client: string;
-  startDate: string;
-  endDate: string;
-  activities: string[];
-  skills: string[];
-};
-
-export type TPageData$Experience$Employment = {
-  position: string;
-  employee: string;
-  startDate: string;
-  endDate: string;
-  activities: string[];
-  skills: string[];
-};
-
-export type TPageData$Experience$Education = {
-  degree: string;
-  authority: string;
-  startDate: string;
-  endDate: string;
-};
-
-export type TPageData$Experience$Certification = {
-  title: string;
-  authority: string;
-};
-
 // CV
-
-export type TPageData$CV = {
-  labels: {
-    skills: string;
-    certifications: string;
-    projects: string;
-    employments: string;
-    education: string;
-  };
-  header: { name: string; title: string };
-};
 
 export const cvData: TPageData$CV = yamlCV;
 
 // Certifications
-
-export type TPageData$Certification = {
-  name: string;
-  authority: string;
-};
-
-export type TPageData$Certifications = {
-  certifications: TPageData$Certification[];
-};
 
 export const certificationsData: TPageData$Certifications = yamlCertifications;

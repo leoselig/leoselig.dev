@@ -1,5 +1,5 @@
 .text-base {
-  line-height: 1.8em;
+  line-height: var(--line-height-default);
   color: var(--text-color-default);
 }
 
