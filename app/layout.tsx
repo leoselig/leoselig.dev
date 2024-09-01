@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Work_Sans } from "next/font/google";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { IconDescriptor } from "next/dist/lib/metadata/types/metadata-types";
 import "./global.css";
 
@@ -21,24 +21,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   );
 }
 
-const metadataFromFaviconHeadData = {
+export const metadata = {
   icons: [] as IconDescriptor[],
+  applicationName: faviconsHeadData.meta["application-name"],
 } satisfies Metadata;
 
-for (const entry of faviconsHeadData) {
-  if (entry.nodeName === "link") {
-    const { attributes } = entry;
-    if (attributes.rel === "icon") {
-      attributes.rel === "icon";
-      metadataFromFaviconHeadData.icons.push({
-        url: attributes.href,
-        sizes: "sizes" in attributes ? attributes.sizes : undefined,
-        type: attributes.type,
-      });
-    }
+export const viewport: Viewport = {
+  themeColor: faviconsHeadData.meta["theme-color"],
+};
+
+for (const link of faviconsHeadData.links) {
+  if (link.rel === "icon") {
+    metadata.icons.push({
+      url: link.href,
+      sizes: "sizes" in link ? link.sizes : undefined,
+      type: link.type,
+    });
   }
 }
-
-export const metadata: Metadata = {
-  ...metadataFromFaviconHeadData,
-};
