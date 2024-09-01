@@ -1,6 +1,6 @@
 .root {
   display: flex;
-  border-top: 2px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 
   padding: var(--space-l);
   padding-left: var(--page-padding-x);

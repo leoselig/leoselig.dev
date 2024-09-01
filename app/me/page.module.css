@@ -5,6 +5,7 @@
 
 .skills-section {
   margin-top: var(--section-gap);
+  margin-bottom: var(--section-gap);
 }
 
 .contact-section {

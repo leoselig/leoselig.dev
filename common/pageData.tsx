@@ -1,6 +1,7 @@
 import yamlMeta from "../data/meta.yaml";
 import yamlSkills from "../data/skills.yaml";
-import yamlAboutMePage from "../data/aboutMe.yaml";
+import yamlPersonalData from "../data/personal.yaml";
+import yamlIntroData from "../data/intro.yaml";
 import yamlContactPage from "../data/contact.yaml";
 import yamlImprintPage from "../data/imprint.yaml";
 import yamlExperience from "../data/experience.yaml";
@@ -8,7 +9,7 @@ import yamlCV from "../data/cv.yaml";
 import yamlCertifications from "../data/certifications.yaml";
 
 import {
-  TPageData$AboutMe,
+  TPageData$Personal,
   TPageData$Certifications,
   TPageData$Contact,
   TPageData$CV,
@@ -18,21 +19,16 @@ import {
   TPageData$Skill,
   TPageData$Skill$Kind,
   TPageData$Skills,
+  TPageData$Intro,
 } from "./dataSchemas";
 
-// About me page data
+export const introData: TPageData$Intro = yamlIntroData;
 
-export const aboutMeData: TPageData$AboutMe = yamlAboutMePage;
-
-// Contact page data
+export const personalData: TPageData$Personal = yamlPersonalData;
 
 export const contactData: TPageData$Contact = yamlContactPage;
 
-// Imprint page data
-
 export const imprintData: TPageData$Imprint = yamlImprintPage;
-
-// Sills page data
 
 export const skillsData: TPageData$Skills = yamlSkills;
 

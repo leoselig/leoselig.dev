@@ -40,11 +40,19 @@ export const experienceDataSchema = z.object({
   education: z.array(educationSchema),
 });
 
-// About me page data
+// Intro  section data
 
-export type TPageData$AboutMe = z.infer<typeof aboutMeDataSchema>;
+export type TPageData$Intro = z.infer<typeof introDataSchema>;
 
-export const aboutMeDataSchema = z.object({
+export const introDataSchema = z.object({
+  content: z.string(),
+});
+
+// Personal section data
+
+export type TPageData$Personal = z.infer<typeof personalDataSchema>;
+
+export const personalDataSchema = z.object({
   content: z.string(),
 });
 

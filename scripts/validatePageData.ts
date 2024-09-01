@@ -4,7 +4,8 @@ import { z } from "zod";
 import { parse } from "yaml";
 
 import {
-  aboutMeDataSchema,
+  introDataSchema,
+  personalDataSchema,
   certificationsDataSchema,
   contactDataSchema,
   cvDataSchema,
@@ -20,7 +21,8 @@ const readYamlFile = async (path: string) =>
 (async () => {
   const result = z
     .object({
-      aboutMeData: aboutMeDataSchema,
+      introData: introDataSchema,
+      personalData: personalDataSchema,
       cvData: cvDataSchema,
       metaData: metaSchema,
       skillsData: skillsDataSchema,
@@ -32,7 +34,8 @@ const readYamlFile = async (path: string) =>
     .safeParse({
       metaData: await readYamlFile("./data/meta.yaml"),
       skillsData: await readYamlFile("./data/skills.yaml"),
-      aboutMeData: await readYamlFile("./data/aboutMe.yaml"),
+      introData: await readYamlFile("./data/intro.yaml"),
+      personalData: await readYamlFile("./data/personal.yaml"),
       contactData: await readYamlFile("./data/contact.yaml"),
       imprintData: await readYamlFile("./data/imprint.yaml"),
       experienceData: await readYamlFile("./data/experience.yaml"),

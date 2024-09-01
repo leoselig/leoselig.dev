@@ -7,7 +7,7 @@
 }
 
 .skill-box {
-  border: 2px solid var(--color-dark);
+  border: 1px solid var(--color-dark);
   border-radius: 0.5rem;
   padding: 1rem;
 }

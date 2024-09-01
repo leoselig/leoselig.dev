@@ -30,7 +30,7 @@ export function PageLayout({
             {[
               "Freelancer",
               "Software Engineer",
-              `${yearsExperience} years experience`,
+              `${yearsExperience} years of experience`,
               "Berlin area",
             ].map((text, index) => (
               <Fragment key={index}>
