@@ -34,6 +34,9 @@ skills:
   - name: Material UI
     kinds:
       - framework
+  - name: CSS Modules
+    kinds:
+      - framework
   - name: Styled Components
     kinds:
       - framework
@@ -52,6 +55,9 @@ skills:
   - name: TDD
     kinds:
       - methodology
+  - name: Playwright
+    kinds:
+      - tools
   - name: Jest
     kinds:
       - tools

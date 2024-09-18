@@ -1,4 +1,16 @@
 projects:
+  - client: Theapolis GmbH & Co. KG
+    periods:
+      - startDate: 2022-09-01
+        endDate: null
+        website: http://theapolis.de
+        activities:
+          - technical concept and implementation of new single-page web application
+          - incremental adoption alongside existing multi-page application
+        skills:
+          - React, Next.js
+          - Playwright, Jest
+          - Amplify
   - client: TIKI Projektentwicklungsgesellschaft mbH, Berlin
     periods:
       - startDate: 2021-12-13
@@ -23,7 +35,7 @@ projects:
           - Material UI
           - Netlify
       - startDate: 2023-07-01
-        endDate: 2024-08-31
+        endDate: null
         activities:
           - planned and implemented Electron app for use as a new product on panel PCs at different customers
           - integrated external hardware (i.e. USB-connected RFID scanner)
@@ -93,6 +105,14 @@ projects:
           - Netlify
           - Serverless functions
 employments:
+  - position: Self-employed Software Engineer
+    employee: null
+    startDate: 2021-03-08
+    endDate: null
+    activities:
+      - Full stack web application development
+      - conception, implementation, consulting
+    skills:
   - position: Lead Software Engineer
     employee: neXenio GmbH, Berlin
     startDate: 2017-10-01

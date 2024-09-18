@@ -28,7 +28,7 @@ export default function CVPrintPage() {
         )
         .flat()
         .sort((period1, period2) =>
-          period1.period.startDate.localeCompare(period2.period.startDate),
+          period2.period.startDate.localeCompare(period1.period.startDate),
         ),
     [],
   );
@@ -93,14 +93,14 @@ export default function CVPrintPage() {
       </section>
       <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
-          {cvData.labels.projects}
+          {cvData.labels.employments}
         </Headline1>
-        {sortedProjectPeriods.map(
-          ({ client, period: { startDate, endDate, activities, skills } }) => (
+        {experienceData.employments.map(
+          ({ position, employee, startDate, endDate, activities, skills }) => (
             <CVTimelineItem
-              key={`${client}-${startDate}`}
-              headline={client}
-              subline={null}
+              key={`${position}–${employee}`}
+              headline={position}
+              subline={employee}
               activities={activities}
               skills={skills}
               startDate={startDate}
@@ -111,14 +111,14 @@ export default function CVPrintPage() {
       </section>
       <section className={styles["section"]}>
         <Headline1 className={styles["section-title"]}>
-          {cvData.labels.employments}
+          {cvData.labels.projects}
         </Headline1>
-        {experienceData.employments.map(
-          ({ position, employee, startDate, endDate, activities, skills }) => (
+        {sortedProjectPeriods.map(
+          ({ client, period: { startDate, endDate, activities, skills } }) => (
             <CVTimelineItem
-              key={`${position}–${employee}`}
-              headline={position}
-              subline={employee}
+              key={`${client}-${startDate}`}
+              headline={client}
+              subline={null}
               activities={activities}
               skills={skills}
               startDate={startDate}
